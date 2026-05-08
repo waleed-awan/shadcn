@@ -1,48 +1,57 @@
-"use client";
+"use client"
 
-import { Marquee } from "@/components/ui/marquee";
+import Image from "next/image"
+import Link from "next/link"
+import { Marquee } from "@/components/ui/marquee"
 
 const items = [
-  { img: "/1.png" },
-  { img: "/2.png" },
-  { img: "/3.png" },
-  { img: "/4.png" },
-  { img: "/5.png" },
-  { img: "/6.png" },
-  { img: "/7.png" },
-  { img: "/8.png" },
-  { img: "/9.png" },
-  { img: "/10.png" },
-  { img: "/11.png" },
-  { img: "/12.png" },
-];
+  { href: "/blocks/marketing-ui/hero-section", img: "1" },
+  { href: "/blocks/marketing-ui/team-section", img: "2" },
+  { href: "/blocks/marketing-ui/portfolio", img: "3" },
+  { href: "/blocks/marketing-ui/about-us-page", img: "4" },
+  { href: "/blocks/dashboard-and-application/dashboard-shell", img: "5" },
+  { href: "/blocks/marketing-ui/blog-component", img: "6" },
+  { href: "/blocks/marketing-ui/testimonials-component", img: "7" },
+  { href: "/blocks/marketing-ui/pricing-component", img: "8" },
+  { href: "/blocks/marketing-ui/contact-us-page", img: "9" },
+  { href: "/blocks/marketing-ui/app-integration", img: "10" },
+]
 
-function Card({ img }: { img: string }) {
+function MarqueeItem({ item }: any) {
   return (
-    <div className="w-[220px] h-[140px] bg-white rounded-2xl border shadow-sm overflow-hidden mx-2">
-      <img src={img} alt="" className="w-full h-full object-cover" />
-    </div>
-  );
+    <Link href={item.href} className="mx-3">
+      <Image
+        src={`/${item.img}.png`}
+        alt="block"
+        width={260}
+        height={160}
+        className="h-28 sm:h-32 md:h-36 lg:h-40 w-auto rounded-md border bg-white shadow-sm"
+      />
+    </Link>
+  )
 }
 
-export default function ShowcaseMarquee() {
+export default function MagicMarquee() {
   return (
-    <div className="w-full py-10 bg-white overflow-hidden">
+    <div className="relative w-full overflow-hidden bg-white py-6">
 
-      {/* Slower First Row */}
-      <Marquee pauseOnHover className="[--duration:70s]">
+      {/* TOP ROW */}
+      <Marquee pauseOnHover className="[--duration:40s]">
         {items.map((item, i) => (
-          <Card key={i} img={item.img} />
+          <MarqueeItem key={i} item={item} />
         ))}
       </Marquee>
 
-      {/* Slower Reverse Row */}
-      <Marquee reverse pauseOnHover className="[--duration:70s] mt-6">
+      {/* BOTTOM ROW (reverse direction) */}
+      <Marquee pauseOnHover reverse className="[--duration:45s]">
         {items.map((item, i) => (
-          <Card key={i} img={item.img} />
+          <MarqueeItem key={i} item={item} />
         ))}
       </Marquee>
 
+      {/* fade edges */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent" />
     </div>
-  );
+  )
 }

@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Caveat } from "next/font/google";
 import { FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
+import { Caveat } from "next/font/google";
 
 const caveat = Caveat({
   subsets: ["latin"],
@@ -11,13 +11,12 @@ const caveat = Caveat({
 
 export default function WhyBuilt() {
   return (
-    <section className="relative mt-10 w-full overflow-hidden border-t-2 border-dotted border-gray-200 bg-white py-20">
+    <section className="relative mt-10 w-full overflow-hidden border-y border-dotted border-gray-400 bg-white py-20">
       {/* Vertical Lines */}
-      <div className="absolute left-[10%] top-0 hidden h-full w-px bg-neutral-300 xl:block" />
-      <div className="absolute right-[10%] top-0 hidden h-full w-px bg-neutral-300 xl:block" />
+   
 
       {/* Main Container */}
-      <div className="mx-auto max-w-[1000px] px-8">
+      <div className="mx-auto border-x-1 border-dotted border-gray-400  max-w-[1000px] px-8">
         {/* Heading */}
         <div className="mb-12 flex justify-center">
           <div className="inline-block">
