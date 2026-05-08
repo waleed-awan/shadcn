@@ -88,7 +88,7 @@ function FAQBlock({ title, questions }: any) {
 
 export default function FAQPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className=" bg-white">
       <div className="mx-auto max-w-7xl px-6 py-16">
         {/* HEADER + FAQ */}
         <section className="flex w-full flex-col items-center justify-center">
