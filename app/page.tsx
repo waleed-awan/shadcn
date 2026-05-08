@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       {/* GLOBAL BOXED LAYOUT */}
-      <div className="mx-auto w-full max-w-7xl border-x border-zinc-200 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-7xl border-x border-zinc-200 ">
         <Navbar />
         <Hero />
         <ShowcaseMarquee />
