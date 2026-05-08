@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Marquee } from "@/components/ui/marquee";
 import { ArrowUpRight } from "lucide-react";
 import { Caveat } from "next/font/google";
+import DashboardApplicationBlock from "./FigmaHeroSection";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "600"] });
 
@@ -101,50 +102,7 @@ export default function BlocksSection() {
             </div>
 
             {/* RIGHT */}
-            <div className="group relative p-8">
-              <div className="mb-10 flex items-start justify-between">
-                <div>
-                  <h2 className="mb-4 text-3xl font-semibold text-black">
-                    Dashboard & Application Blocks
-                  </h2>
-
-                  <p className="max-w-md text-gray-500">
-                    Build intuitive dashboards and web apps with pre-designed
-                    blocks that are ready to use and easy to customize.
-                  </p>
-                </div>
-
-                <div className="flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-black text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                  <ArrowUpRight size={18} />
-                </div>
-              </div>
-
-              <div className="relative flex items-end justify-center">
-                <div className="mr-4 -ml-16 shrink-0">
-                  <img
-                    src="/1.png"
-                    alt="left"
-                    className="w-44 rounded-xl shadow-lg"
-                  />
-                </div>
-
-                <div className="z-10">
-                  <img
-                    src="/8.png"
-                    alt="center"
-                    className="w-80 rounded-2xl border shadow-2xl"
-                  />
-                </div>
-
-                <div className="-mr-16 ml-4 shrink-0">
-                  <img
-                    src="/2.png"
-                    alt="right"
-                    className="w-44 rounded-xl shadow-lg"
-                  />
-                </div>
-              </div>
-            </div>
+            <DashboardApplicationBlock/>
 
           </div>
         </div>
