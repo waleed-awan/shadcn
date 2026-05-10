@@ -11,12 +11,12 @@ const caveat = Caveat({
 
 export default function WhyBuilt() {
   return (
-    <section className="relative mt-10 w-full overflow-hidden border-y border-dotted border-gray-400 bg-white py-20">
+    <section className="relative mt-10 w-full overflow-hidden border-y border-dashed border-gray-300 bg-white py-20">
       {/* Vertical Lines */}
    
 
       {/* Main Container */}
-      <div className="mx-auto border-x-1 border-dotted border-gray-400  max-w-[1000px] px-8">
+      <div className="mx-auto border-x-1 border-dashed border-gray-300  max-w-[1000px] px-8">
         {/* Heading */}
         <div className="mb-12 flex justify-center">
           <div className="inline-block">

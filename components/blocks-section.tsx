@@ -24,12 +24,12 @@ const blocks = [
 export default function UIBlocksSection() {
   return (
     <div className="w-full bg-white">
-      <div className="mx-auto max-w-7xl overflow-hidden border border-dashed border-gray-300">
-        <div className="grid divide-x divide-y divide-dashed divide-gray-300 md:grid-cols-2 md:divide-y-0 lg:grid-cols-3">
+      <div className="mx-auto max-w-7xl overflow-hidden border-b border-dashed border-gray-300">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3">
           {blocks.map((item, i) => (
             <div
               key={i}
-              className="group relative flex flex-col justify-between px-8 pt-8"
+              className={`group relative flex flex-col justify-between border-r border-b border-dashed border-gray-300 px-8 pt-8 ${i === blocks.length - 1 ? "border-r-0" : ""} `}
             >
               {/* HEADER + ARROW */}
               <div className="mb-4 flex items-start justify-between">
@@ -47,14 +47,14 @@ export default function UIBlocksSection() {
 
               {/* IMAGE */}
               <div className="relative mt-auto">
-                <div className="relative h-[200px] w-full overflow-hidden rounded-t-2xl shadow-lg">
-                  <Image
-                    src={item.img}
-                    alt={item.title}
-                    fill
-                    className="object-cover object-bottom transition-transform duration-500 ease-out group-hover:scale-110"
-                  />
-                </div>
+                <div className="relative h-[200px] w-full overflow-hidden rounded-t-lg border border-gray-300 border-b-0">
+  <Image
+    src={item.img}
+    alt={item.title}
+    fill
+    className="object-cover object-bottom transition-transform duration-500 ease-out group-hover:scale-110"
+  />
+</div>
               </div>
             </div>
           ))}

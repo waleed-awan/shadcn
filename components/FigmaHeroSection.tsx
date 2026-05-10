@@ -5,7 +5,7 @@ import { CircleArrowUp } from "lucide-react"
 
 export default function DashboardApplicationBlock() {
   return (
-    <div className="group flex h-full flex-col  border border-dashed border-gray-300 justify-between gap-10 bg-white">
+    <div className="group flex h-full flex-col justify-between gap-10 bg-white">
       
       {/* TEXT SECTION */}
       <div className=" px-4 py-2.5 sm:px-6 lg:px-8">
