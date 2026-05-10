@@ -6,7 +6,7 @@ export default function CTASection() {
   return (
     <section
       id="cta"
-      className="bg-white pt-12 pb-24 sm:pt-14 sm:pb-32 overflow-x-hidden"
+      className="bg-white pt-12 border-t border-dashed border-gray-300 pb-24 sm:pt-14 sm:pb-32 overflow-x-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 

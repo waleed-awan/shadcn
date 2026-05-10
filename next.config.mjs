@@ -4,10 +4,14 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "cdn.shadcnstudio.com",
+      },
+      {
+        protocol: "https",
         hostname: "i.pravatar.cc",
       },
     ],
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

@@ -4,6 +4,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
+
+html,
+body {
+  overflow-x: hidden;
+}
+
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: var(--font-sans);

@@ -12,7 +12,7 @@ const images = ["/1.png", "/2.png", "/3.png", "/4.png", "/5.png"];
 
 export default function BlocksSection() {
   return (
-    <div className="w-full bg-white">
+    <div className="w-full border-t border-gray-300 border-dashed bg-white">
 
       {/* HERO SECTION */}
       <section className="w-full py-16 flex items-center justify-center">
@@ -59,7 +59,7 @@ export default function BlocksSection() {
 
       {/* MERGED BLOCK SECTION */}
       <div className="w-full bg-white">
-        <div className="mx-auto max-w-7xl overflow-hidden border border-dashed border-gray-300">
+        <div className="mx-auto max-w-7xl overflow-hidden border-y border-dashed border-gray-300">
           <div className="grid divide-x divide-dashed divide-gray-300 lg:grid-cols-2">
 
             {/* LEFT */}

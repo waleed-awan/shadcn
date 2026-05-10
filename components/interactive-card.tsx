@@ -11,8 +11,6 @@ export default function InteractiveCard({ leftImg, rightImg }: Props) {
   return (
     <div className="group relative w-[300px] h-[200px] bg-[#f3f3f3] rounded-sm border border-gray-200 overflow-hidden">
 
-     
-
       {/* LEFT IMAGE */}
       <div
         className="
@@ -26,12 +24,12 @@ export default function InteractiveCard({ leftImg, rightImg }: Props) {
           group-hover:scale-150
         "
       >
-        <div className="bg-white border rounded-sm shadow-md overflow-hidden transition-transform duration-700 group-hover:scale-110">
+        <div className="bg-white border rounded-sm shadow-md overflow-hidden transition-transform duration-700 group-hover:scale-105">
           <Image
             src={leftImg}
             alt="preview"
-            width={500}
-            height={300}
+            width={320}
+            height={200}
             className="w-full h-auto object-cover"
           />
         </div>
@@ -49,16 +47,17 @@ export default function InteractiveCard({ leftImg, rightImg }: Props) {
           group-hover:-translate-y-4
         "
       >
-        <div className="bg-white border rounded-sm shadow-sm overflow-hidden transition-transform duration-700 group-hover:scale-110">
+        <div className="bg-white border rounded-sm shadow-sm overflow-hidden transition-transform duration-700 group-hover:scale-105">
           <Image
             src={rightImg}
             alt="preview"
-            width={400}
-            height={250}
+            width={280}
+            height={180}
             className="w-full h-auto object-cover"
           />
         </div>
       </div>
+
     </div>
   )
 }

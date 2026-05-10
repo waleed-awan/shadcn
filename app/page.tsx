@@ -18,29 +18,80 @@ import CTASection from "@/components/CTASection"
 import Footer from "@/components/footer"
 import FigmaHeroSection from "@/components/FigmaHeroSection"
 import AdvancedToolsSection from "@/components/AdvancedToolsSection"
+import AnimatedBeamNetworkUI from "@/components/node-connection"
+
+import SectionFrame from "@/components/SectionFrame"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       {/* GLOBAL BOXED LAYOUT */}
-      <div className="mx-auto w-full max-w-7xl border-x border-zinc-200 ">
+      <div className="mx-auto w-full max-w-7xl border-x border-dashed border-zinc-200">
         <Navbar />
+
         <Hero />
+
         <ShowcaseMarquee />
-        <AnimatedCardStack />
-        <FeaturesGrid />
-        <WallOfLove />
-        <AdvancedToolsSection />
-        <BlocksSection />
-        <UIBlocksSection />
-        <LandingSection />
-        <DashboardSection />
-        <FrontendSection />
-        <StatsSection />
-        <WhyBuilt />
-        <FAQPage />
-        <CTASection />
-        <Footer />
+
+        <SectionFrame>
+          <AnimatedCardStack />
+        </SectionFrame>
+
+        <SectionFrame>
+          <FeaturesGrid />
+        </SectionFrame>
+
+        <SectionFrame>
+          <WallOfLove />
+        </SectionFrame>
+
+        <SectionFrame>
+          <AnimatedBeamNetworkUI />
+        </SectionFrame>
+
+        <SectionFrame>
+          <AdvancedToolsSection />
+        </SectionFrame>
+
+        <SectionFrame>
+          <BlocksSection />
+        </SectionFrame>
+
+        <SectionFrame>
+          <UIBlocksSection />
+        </SectionFrame>
+
+        <SectionFrame>
+          <LandingSection />
+        </SectionFrame>
+
+        <SectionFrame>
+          <DashboardSection />
+        </SectionFrame>
+
+        <SectionFrame>
+          <FrontendSection />
+        </SectionFrame>
+
+        <SectionFrame>
+          <StatsSection />
+        </SectionFrame>
+
+        <SectionFrame>
+          <WhyBuilt />
+        </SectionFrame>
+
+        <SectionFrame>
+          <FAQPage />
+        </SectionFrame>
+
+        <SectionFrame>
+          <CTASection />
+        </SectionFrame>
+
+        <SectionFrame>
+          <Footer />
+        </SectionFrame>
       </div>
     </main>
   )

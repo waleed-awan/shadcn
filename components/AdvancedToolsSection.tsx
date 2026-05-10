@@ -64,7 +64,7 @@ export default function AdvancedToolsSection() {
           return (
             <div
               key={i}
-              className="flex cursor-pointer items-center gap-4 border border-dashed border-gray-300 px-4 py-8 transition hover:bg-gray-50"
+              className={`flex cursor-pointer items-center gap-4 border-t border-r border-b border-dashed border-gray-200 px-4 py-8 transition hover:bg-gray-50 ${i === tools.length - 1 ? "border-r-0" : ""} `}
             >
               <div className="hidden size-12 place-items-center rounded-lg border bg-white lg:grid">
                 <Icon className="size-6 text-black" />
@@ -74,6 +74,7 @@ export default function AdvancedToolsSection() {
                 <span className="text-sm font-medium text-gray-500">
                   {item.subtitle}
                 </span>
+
                 <h3 className="text-lg font-semibold text-black">
                   {item.title}
                 </h3>
@@ -200,7 +201,7 @@ export default function AdvancedToolsSection() {
         </div>
 
         {/* CONTENT GRID */}
-        <div className="mt-12 border border-gray-300 border-dashed grid lg:grid-cols-2">
+        <div className="mt-12 grid border-y border-dashed border-gray-300 lg:grid-cols-2">
           {/* LEFT */}
           <div className=" ">
             {steps.map((step, i) => {
@@ -208,14 +209,16 @@ export default function AdvancedToolsSection() {
               return (
                 <div
                   key={i}
-                  className="cursor-pointer border border-gray-300 border-dashed p-6 transition hover:bg-gray-50"
+                  className={`cursor-pointer border-r border-b border-dashed border-gray-200 p-6 transition hover:bg-gray-50`}
                 >
                   <div className="mb-2 flex items-center gap-2">
                     <Icon className="size-5 text-black" />
+
                     <h3 className="text-lg font-semibold text-black">
                       {step.title}
                     </h3>
                   </div>
+
                   <p className="text-sm text-gray-600">{step.desc}</p>
                 </div>
               )
@@ -223,7 +226,7 @@ export default function AdvancedToolsSection() {
           </div>
 
           {/* RIGHT VIDEO */}
-          <div className="flex border border-gray-300 border-dashed items-center justify-center p-6">
+          <div className="flex items-center justify-center p-6">
             <video
               className="w-full max-w-xl rounded-lg border"
               autoPlay

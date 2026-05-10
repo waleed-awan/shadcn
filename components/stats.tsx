@@ -92,7 +92,7 @@ export default function StatsSection() {
   return (
     <section
       ref={ref}
-      className="w-full overflow-hidden border-y border-dashed border-gray-300 bg-white"
+      className="w-full overflow-hidden  bg-white"
     >
       {/* TOP SECTION */}
       <div className="border-b border-dashed border-gray-300 px-4 py-14 sm:py-16 md:py-20">
