@@ -1,5 +1,7 @@
 "use client"
 
+import { motion } from "framer-motion"
+
 import {
   MousePointer2,
   SwatchBook,
@@ -53,18 +55,33 @@ const steps = [
 
 export default function AdvancedToolsSection() {
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
       id="advance-tools"
       className="overflow-hidden bg-white pt-10 sm:pt-16 lg:pt-24"
     >
+
       {/* TOP GRID */}
-      <div className="grid divide-y divide-dashed border-y border-dashed md:grid-cols-2 xl:grid-cols-4">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="grid divide-y divide-dashed border-y border-dashed md:grid-cols-2 xl:grid-cols-4"
+      >
         {tools.map((item, i) => {
           const Icon = item.icon
           return (
-            <div
+            <motion.div
               key={i}
-              className={`flex cursor-pointer items-center gap-4 border-t border-r border-b border-dashed border-gray-200 px-4 py-8 transition hover:bg-gray-50 ${i === tools.length - 1 ? "border-r-0" : ""} `}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="flex cursor-pointer items-center gap-4 border-t border-r border-b border-dashed border-gray-200 px-4 py-8 transition hover:bg-gray-50"
             >
               <div className="hidden size-12 place-items-center rounded-lg border bg-white lg:grid">
                 <Icon className="size-6 text-black" />
@@ -79,20 +96,26 @@ export default function AdvancedToolsSection() {
                   {item.title}
                 </h3>
               </div>
-            </div>
+            </motion.div>
           )
         })}
-      </div>
+      </motion.div>
 
       {/* MAIN SECTION */}
       <div className="py-12 sm:py-16 lg:py-24">
+
         {/* Heading */}
-        <div className="mx-auto max-w-4xl px-4 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mx-auto max-w-4xl px-4 text-center"
+        >
           <h2 className="text-2xl leading-relaxed font-semibold text-black sm:text-3xl lg:text-3xl">
             No Code. Just Drag, Drop &{" "}
             <span className="relative inline-block font-bold">
               Build Your Landing Page
-              {/* SVG UNDERLINE (FIXED) */}
               <svg
                 className="pointer-events-none absolute -bottom-2 left-0 h-[18px] w-full"
                 viewBox="0 0 300 20"
@@ -111,122 +134,69 @@ export default function AdvancedToolsSection() {
           </h2>
 
           <p className="mt-4 text-base text-gray-600 sm:text-lg">
-            Create landing pages by dragging blocks, preview in real-time and
-            export production-ready code.
+            Create landing pages by dragging blocks, preview in real-time and export production-ready code.
           </p>
 
-          {/* BUTTONS */}
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-            {/* Get all access */}
             <a
               href="/#pricing"
               className="inline-flex items-center justify-center gap-1 rounded-md bg-black px-6 py-2 text-base font-medium text-white transition hover:bg-black/80"
             >
               Get all access
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 128 128"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-5"
-              >
-                <path
-                  d="M63.6734 24.8486V49.3899C63.6734 57.4589 57.1322 64.0001 49.0632 64.0001H25.2041"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                />
-                <path
-                  d="M64.3266 103.152L64.3266 78.6106C64.3266 70.5416 70.8678 64.0003 78.9368 64.0003L102.796 64.0004"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                />
-                <line
-                  x1="93"
-                  y1="35"
-                  x2="76"
-                  y2="52"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                />
-                <line
-                  x1="51"
-                  y1="77"
-                  x2="34"
-                  y2="93"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                />
-                <line
-                  x1="50"
-                  y1="51"
-                  x2="34"
-                  y2="34"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                />
-                <line
-                  x1="93"
-                  y1="93"
-                  x2="76"
-                  y2="76"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                />
-              </svg>
             </a>
 
-            {/* Explore more */}
             <a
               href="/builder"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-gray-200 px-6 py-2 text-base font-medium text-black shadow-sm transition hover:bg-gray-50"
             >
               Explore more
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
             </a>
           </div>
-        </div>
+        </motion.div>
 
         {/* CONTENT GRID */}
-        <div className="mt-12 grid border-y border-dashed border-gray-300 lg:grid-cols-2">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-12 grid border-y border-dashed border-gray-300 lg:grid-cols-2"
+        >
+
           {/* LEFT */}
-          <div className=" ">
+          <div>
             {steps.map((step, i) => {
               const Icon = step.icon
               return (
-                <div
+                <motion.div
                   key={i}
-                  className={`cursor-pointer border-r border-b border-dashed border-gray-200 p-6 transition hover:bg-gray-50`}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="cursor-pointer border-r border-b border-dashed border-gray-200 p-6 transition hover:bg-gray-50"
                 >
                   <div className="mb-2 flex items-center gap-2">
                     <Icon className="size-5 text-black" />
-
                     <h3 className="text-lg font-semibold text-black">
                       {step.title}
                     </h3>
                   </div>
 
                   <p className="text-sm text-gray-600">{step.desc}</p>
-                </div>
+                </motion.div>
               )
             })}
           </div>
 
           {/* RIGHT VIDEO */}
-          <div className="flex items-center justify-center p-6">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center p-6"
+          >
             <video
               className="w-full max-w-xl rounded-lg border"
               autoPlay
@@ -239,9 +209,10 @@ export default function AdvancedToolsSection() {
                 type="video/webm"
               />
             </video>
-          </div>
-        </div>
+          </motion.div>
+
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }

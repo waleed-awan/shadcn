@@ -52,14 +52,13 @@ function RippleRing({ delay, size }: { delay: number; size: number }) {
         ease: "easeInOut",
         delay,
       }}
-      /* 🔥 ONLY CHANGE: dark ripple border */
       className="absolute rounded-[30px] border border-neutral-500"
       style={{ inset: -size }}
     />
   )
 }
 
-/* ================= WHITE THEME BEAM ================= */
+/* ================= BEAM (RESTORED EXACTLY) ================= */
 
 function Beam({ direction }: { direction: "x" | "y" }) {
   return (
@@ -70,7 +69,9 @@ function Beam({ direction }: { direction: "x" | "y" }) {
           : "bg-gradient-to-b from-transparent via-neutral-900/50 to-transparent"
       }`}
       animate={
-        direction === "x" ? { x: ["-100%", "100%"] } : { y: ["-100%", "100%"] }
+        direction === "x"
+          ? { x: ["-100%", "100%"] }
+          : { y: ["-100%", "100%"] }
       }
       transition={{
         duration: 1.4,
@@ -81,106 +82,66 @@ function Beam({ direction }: { direction: "x" | "y" }) {
   )
 }
 
-/* ================= BUTTON ================= */
-
-function Button({
-  children,
-  variant = "primary",
-  href,
-}: {
-  children: React.ReactNode
-  variant?: "primary" | "secondary"
-  href: string
-}) {
-  const base =
-    "inline-flex items-center justify-center gap-2 font-medium transition-all h-11 px-6 rounded-lg text-base max-[400px]:flex-1"
-
-  const styles =
-    variant === "primary"
-      ? "bg-black text-white hover:bg-black/90"
-      : "bg-white border border-neutral-200 text-black hover:bg-neutral-50"
-
-  return (
-    <a href={href} className={`${base} ${styles}`}>
-      {children}
-    </a>
-  )
-}
-
-/* ================= FULL SECTION ================= */
+/* ================= MAIN ================= */
 
 export default function HeroWithFeatureShowcase() {
   return (
-    <section className="space-y-16 border-y border-gray-300 border-dashed bg-white py-20">
-      
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="space-y-16 border-y border-gray-300 border-dashed bg-white py-20"
+    >
+
       {/* HERO */}
-      <div className="space-y-6">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="space-y-6"
+      >
         <div className="flex flex-col items-center gap-4 text-center">
           <span className="font-[Caveat] text-lg font-extrabold text-neutral-700 underline underline-offset-4">
             shadcn/ui for Figma
           </span>
 
           <h2 className="max-w-4xl text-2xl font-semibold text-neutral-900 sm:text-3xl lg:text-4xl lg:leading-[1.4]">
-            The Ultimate{" "}
-            <span className="relative font-bold text-black">
-              Figma Design System
-              <svg
-                width="453"
-                height="8"
-                viewBox="0 0 453 8"
-                className="absolute -bottom-1 left-0 w-full"
-                fill="none"
-              >
-                <path
-                  d="M2 6.75068C53.4722 -1.10509 368.533 2.14284 451.5 6.75085"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>{" "}
-            , Tailored Exclusively for shadcn/ui Library
+            The Ultimate Design System
           </h2>
 
           <p className="max-w-3xl text-lg text-neutral-600">
-            shadcn/studio Figma offers{" "}
-            <span className="font-semibold text-black">
-              1000+ component variants, 700+ blocks, 10+ templates, 9+ dashboard
-            </span>{" "}
-            and <span className="font-semibold text-black">4 themes</span> and
-            more with an intuitive drag-and-drop page builder.
+            1000+ components, 700+ blocks, 10+ templates, 9 dashboards.
           </p>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 py-10">
-          
-          <Link
-            href="#pricing"
-            className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg bg-[#0d0d0d] px-6 py-3 text-base font-medium text-white shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-[1.02]"
-          >
-            <span className="absolute inset-0 bg-gray-500 opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-100" />
-            <div className="pointer-events-none absolute inset-[3px] rounded-lg border-[1.5px] border-gray-400" />
-            <span className="relative z-10">Get all access</span>
+          <Link href="#pricing" className="rounded-lg bg-black px-6 py-3 text-white">
+            Get all access
           </Link>
 
-          <Link
-            href="#features"
-            className="group inline-flex items-center justify-center gap-3 rounded-lg bg-gray-200 px-6 py-3 text-base font-medium text-black shadow-[0_8px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:scale-[1.02]"
-          >
-            <span>Explore more</span>
+          <Link href="#features" className="rounded-lg bg-gray-200 px-6 py-3 text-black">
+            Explore more
           </Link>
-
         </div>
-      </div>
+      </motion.div>
 
       {/* SHOWCASE */}
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 max-lg:flex-col max-lg:gap-16">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="mx-auto flex max-w-7xl items-center justify-between px-6 max-lg:flex-col max-lg:gap-16"
+      >
 
         {/* LEFT */}
         <div className="relative flex flex-col gap-6">
           {leftItems.map((item, i) => (
             <div key={i} className="relative flex justify-end">
 
+              {/* BEAM RESTORED */}
               <div className="absolute top-1/2 left-full hidden h-px w-[140px] -translate-y-1/2 overflow-hidden bg-neutral-200 lg:block">
                 <Beam direction="x" />
               </div>
@@ -204,6 +165,7 @@ export default function HeroWithFeatureShowcase() {
 
         {/* CENTER */}
         <div className="relative hidden items-center justify-center lg:flex">
+
           <div className="absolute top-1/2 left-[-420px] h-px w-[840px] -translate-y-1/2 overflow-hidden bg-neutral-200">
             <Beam direction="x" />
           </div>
@@ -260,7 +222,7 @@ export default function HeroWithFeatureShowcase() {
           ))}
         </div>
 
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   )
 }
