@@ -11,6 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react"
 import Link from "next/link"
+import FigmaColumnsShowcase from "./FigmaColumnsShowcase"
 
 /* ================= DATA ================= */
 
@@ -58,7 +59,7 @@ function RippleRing({ delay, size }: { delay: number; size: number }) {
   )
 }
 
-/* ================= BEAM (RESTORED EXACTLY) ================= */
+/* ================= BEAM ================= */
 
 function Beam({ direction }: { direction: "x" | "y" }) {
   return (
@@ -93,7 +94,6 @@ export default function HeroWithFeatureShowcase() {
       viewport={{ once: true }}
       className="space-y-16 border-y border-gray-300 border-dashed bg-white py-20"
     >
-
       {/* HERO */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -116,15 +116,33 @@ export default function HeroWithFeatureShowcase() {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 py-10">
-          <Link href="#pricing" className="rounded-lg bg-black px-6 py-3 text-white">
-            Get all access
-          </Link>
+        <motion.div
+            initial={{ opacity: 0, y: 120 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9 }}
+            className="flex flex-wrap items-center justify-center gap-4 py-10"
+          >
+            {/* BLACK BUTTON */}
+            <Link
+              href="#pricing"
+              className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg bg-[#0d0d0d] px-6 py-3 text-base font-medium text-white shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-[1.02]"
+            >
+              <span className="absolute inset-0 bg-gray-500 opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-100" />
 
-          <Link href="#features" className="rounded-lg bg-gray-200 px-6 py-3 text-black">
-            Explore more
-          </Link>
-        </div>
+              <div className="pointer-events-none absolute inset-[3px] rounded-lg border border-gray-400" />
+
+              <span className="relative z-10">Get all access</span>
+            </Link>
+
+            {/* WHITE BUTTON */}
+            <Link
+              href="#features"
+              className="group inline-flex items-center justify-center gap-3 rounded-lg bg-gray-200 px-6 py-3 text-base font-medium text-black shadow-[0_8px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:scale-[1.02]"
+            >
+              Explore more
+            </Link>
+          </motion.div>
       </motion.div>
 
       {/* SHOWCASE */}
@@ -135,13 +153,10 @@ export default function HeroWithFeatureShowcase() {
         viewport={{ once: true }}
         className="mx-auto flex max-w-7xl items-center justify-between px-6 max-lg:flex-col max-lg:gap-16"
       >
-
         {/* LEFT */}
         <div className="relative flex flex-col gap-6">
           {leftItems.map((item, i) => (
             <div key={i} className="relative flex justify-end">
-
-              {/* BEAM RESTORED */}
               <div className="absolute top-1/2 left-full hidden h-px w-[140px] -translate-y-1/2 overflow-hidden bg-neutral-200 lg:block">
                 <Beam direction="x" />
               </div>
@@ -165,7 +180,6 @@ export default function HeroWithFeatureShowcase() {
 
         {/* CENTER */}
         <div className="relative hidden items-center justify-center lg:flex">
-
           <div className="absolute top-1/2 left-[-420px] h-px w-[840px] -translate-y-1/2 overflow-hidden bg-neutral-200">
             <Beam direction="x" />
           </div>
@@ -179,7 +193,10 @@ export default function HeroWithFeatureShowcase() {
               <div className="flex items-center gap-4 p-4">
                 <div className="flex size-14 items-center justify-center rounded-2xl border border-neutral-200 bg-white">
                   <div className="flex size-9 items-center justify-center rounded-lg bg-black">
-                    <img src="https://cdn.shadcnstudio.com/ss-assets/brand-logo/shadcn-logo.png" className="size-5" />
+                    <img
+                      src="https://cdn.shadcnstudio.com/ss-assets/brand-logo/shadcn-logo.png"
+                      className="size-5"
+                    />
                   </div>
                 </div>
 
@@ -187,12 +204,14 @@ export default function HeroWithFeatureShowcase() {
 
                 <div className="flex size-14 items-center justify-center rounded-2xl border border-neutral-200 bg-white">
                   <div className="flex size-9 items-center justify-center rounded-lg bg-black">
-                    <img src="https://cdn.shadcnstudio.com/ss-assets/brand-logo/figma-icon.png" className="size-5" />
+                    <img
+                      src="https://cdn.shadcnstudio.com/ss-assets/brand-logo/figma-icon.png"
+                      className="size-5"
+                    />
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 
@@ -200,7 +219,6 @@ export default function HeroWithFeatureShowcase() {
         <div className="relative flex flex-col gap-6">
           {rightItems.map((item, i) => (
             <div key={i} className="relative flex justify-start">
-
               <div className="absolute top-1/2 right-full hidden h-px w-[140px] -translate-y-1/2 overflow-hidden bg-neutral-200 lg:block">
                 <Beam direction="x" />
               </div>
@@ -221,7 +239,16 @@ export default function HeroWithFeatureShowcase() {
             </div>
           ))}
         </div>
+      </motion.div>
 
+      {/* ✅ FIGMA SHOWCASE WITH ANIMATION */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <FigmaColumnsShowcase />
       </motion.div>
     </motion.section>
   )

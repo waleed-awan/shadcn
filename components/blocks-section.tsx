@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
+import { motion } from "framer-motion"
 
 const blocks = [
   {
@@ -24,13 +25,32 @@ const blocks = [
 export default function UIBlocksSection() {
   return (
     <div className="w-full bg-white">
-      <div className="mx-auto max-w-7xl overflow-hidden border-b border-dashed border-gray-300">
+
+      <motion.div
+        initial={{ opacity: 0, y: 80 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.15 }}
+        className="mx-auto max-w-7xl overflow-hidden border-b border-dashed border-gray-300"
+      >
         <div className="grid md:grid-cols-2 lg:grid-cols-3">
+
           {blocks.map((item, i) => (
-            <div
+            <motion.div
               key={i}
-              className={`group relative flex flex-col justify-between border-r border-b border-dashed border-gray-300 px-8 pt-8 ${i === blocks.length - 1 ? "border-r-0" : ""} `}
+              initial={{ opacity: 0, y: 80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.7,
+                delay: i * 0.15,
+                ease: "easeOut",
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+              className={`group relative flex flex-col justify-between border-r border-b border-dashed border-gray-300 px-8 pt-8 ${
+                i === blocks.length - 1 ? "border-r-0" : ""
+              }`}
             >
+
               {/* HEADER + ARROW */}
               <div className="mb-4 flex items-start justify-between">
                 <h2 className="text-2xl font-semibold text-black">
@@ -43,34 +63,64 @@ export default function UIBlocksSection() {
               </div>
 
               {/* DESCRIPTION */}
-              <p className="mb-6 leading-relaxed text-gray-500">{item.desc}</p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{
+                  delay: i * 0.15 + 0.2,
+                  duration: 0.6,
+                }}
+                viewport={{ once: true }}
+                className="mb-6 leading-relaxed text-gray-500"
+              >
+                {item.desc}
+              </motion.p>
 
               {/* IMAGE */}
-              <div className="relative mt-auto">
-                <div className="relative h-[200px] w-full overflow-hidden rounded-t-lg border border-gray-300 border-b-0">
-  <Image
-    src={item.img}
-    alt={item.title}
-    fill
-    className="object-cover object-bottom transition-transform duration-500 ease-out group-hover:scale-110"
-  />
-</div>
-              </div>
-            </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{
+                  delay: i * 0.15 + 0.3,
+                  duration: 0.7,
+                }}
+                viewport={{ once: true }}
+                className="relative mt-auto"
+              >
+                <div className="relative h-[200px] w-full overflow-hidden rounded-t-lg border border-b-0 border-gray-300">
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    fill
+                    className="object-cover object-bottom transition-transform duration-500 ease-out group-hover:scale-110"
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
 
-        {/* 🔥 CENTER BUTTON */}
-        <div className="flex justify-center py-10">
+        {/* CENTER BUTTON */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.3,
+          }}
+          viewport={{ once: true }}
+          className="flex justify-center py-10"
+        >
           <button className="group flex items-center gap-2 rounded-lg bg-black px-6 py-3 text-sm font-medium text-white transition hover:opacity-80">
             Explore all blocks
+
             <ArrowUpRight
               size={16}
               className="relative -top-[2px] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
             />
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   )
 }
