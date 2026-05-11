@@ -1,7 +1,7 @@
 "use client"
 
+import { motion } from "framer-motion"
 import InteractiveCard from "./interactive-card"
-
 
 export default function FrontendSection() {
   return (
@@ -11,7 +11,16 @@ export default function FrontendSection() {
         <div className="mx-auto grid max-w-7xl items-center gap-8 md:grid-cols-[0.6fr_1.4fr]">
           
           {/* LEFT CONTENT */}
-          <div className="w-full">
+          <motion.div
+            initial={{ opacity: 0, x: -120 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+            }}
+            className="w-full"
+          >
             <h2 className="mb-4 text-2xl font-semibold text-black sm:text-3xl">
               Frontend Templates
             </h2>
@@ -31,10 +40,19 @@ export default function FrontendSection() {
             <button className="mt-4 flex items-center gap-2 rounded-lg bg-gray-100 px-5 py-2.5 text-base text-black transition hover:bg-gray-200 sm:text-lg">
               Explore more →
             </button>
-          </div>
+          </motion.div>
 
           {/* RIGHT SIDE CARDS */}
-          <div className="flex cursor-pointer gap-5 overflow-x-auto pb-4 sm:gap-6 md:gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: 120 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+            }}
+            className="flex cursor-pointer gap-5 overflow-x-auto pb-4 sm:gap-6 md:gap-8"
+          >
             <InteractiveCard
               leftImg="/landing3.png"
               rightImg="/landing03.png"
@@ -49,7 +67,7 @@ export default function FrontendSection() {
               leftImg="/landing1.png"
               rightImg="/landing01.png"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
     </>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
 import { Caveat } from "next/font/google";
 
@@ -12,13 +13,24 @@ const caveat = Caveat({
 export default function WhyBuilt() {
   return (
     <section className="relative mt-10 w-full overflow-hidden border-y border-dashed border-gray-300 bg-white py-20">
-      {/* Vertical Lines */}
-   
-
+      
       {/* Main Container */}
-      <div className="mx-auto border-x-1 border-dashed border-gray-300  max-w-[1000px] px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 90 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        className="mx-auto border-x-1 border-dashed border-gray-300 max-w-[1000px] px-8"
+      >
+        
         {/* Heading */}
-        <div className="mb-12 flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="mb-12 flex justify-center"
+        >
           <div className="inline-block">
             <h2
               className={`${caveat.className} text-[27px] font-semibold text-black`}
@@ -28,10 +40,16 @@ export default function WhyBuilt() {
 
             <div className="mt-[2px] h-[2px] w-full bg-black" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Content */}
-        <div className="space-y-9 text-left text-[16px] leading-[1.9] tracking-[-0.01em] text-black md:text-[17px]">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+          className="space-y-9 text-left text-[16px] leading-[1.9] tracking-[-0.01em] text-black md:text-[17px]"
+        >
           <p>
             With over a decade of experience creating UI components,
             themes, and templates - and earning the{" "}
@@ -82,13 +100,18 @@ export default function WhyBuilt() {
             </span>{" "}
             all built to help you ship faster.
           </p>
-        </div>
+        </motion.div>
 
         {/* Authors */}
-        <div className="mt-16 flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
+        <motion.div
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="mt-16 flex flex-col gap-10 md:flex-row md:items-center md:justify-between"
+        >
           {/* Left Author */}
           <div className="flex items-center gap-4">
-            {/* Image Avatar */}
             <div className="relative h-[56px] w-[56px] overflow-hidden rounded-full border border-neutral-200">
               <Image
                 src="/avatar-33.png"
@@ -131,7 +154,6 @@ export default function WhyBuilt() {
               </p>
             </div>
 
-            {/* Image Avatar */}
             <div className="relative order-1 h-[56px] w-[56px] overflow-hidden rounded-full border border-neutral-200 md:order-2">
               <Image
                 src="/avatar-32.png"
@@ -141,8 +163,9 @@ export default function WhyBuilt() {
               />
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+
+      </motion.div>
     </section>
   );
 }

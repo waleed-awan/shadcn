@@ -5,7 +5,7 @@ import { Asterisk, FileText } from "lucide-react"
 
 export default function InstallFlowCard() {
   return (
-    <div className="w-full max-w-[430px] bg-white border-2 border-dotted border-gray-200     px-7 py-7">
+    <div className="w-full max-w-[430px] bg-white border-b border-dotted border-zinc-300    px-7 py-7">
       {/* Heading */}
       <div className="max-w-[340px]">
         <h3 className="text-[15px] leading-[1.35] font-semibold text-black">

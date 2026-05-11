@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { motion } from "framer-motion"
 import { Marquee } from "@/components/ui/marquee"
 
 const items = [
@@ -33,7 +34,13 @@ function MarqueeItem({ item }: any) {
 
 export default function MagicMarquee() {
   return (
-    <div className="relative w-full overflow-hidden bg-white py-6">
+    <motion.div
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative w-full overflow-hidden bg-white py-6"
+    >
 
       {/* TOP ROW */}
       <Marquee pauseOnHover className="[--duration:40s]">
@@ -52,6 +59,7 @@ export default function MagicMarquee() {
       {/* fade edges */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent" />
-    </div>
+
+    </motion.div>
   )
 }
