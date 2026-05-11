@@ -16,7 +16,6 @@ import WhyBuilt from "@/components/why-built"
 import FeaturesGrid from "@/components/featuregrid"
 import CTASection from "@/components/CTASection"
 import Footer from "@/components/footer"
-import FigmaHeroSection from "@/components/FigmaHeroSection"
 import AdvancedToolsSection from "@/components/AdvancedToolsSection"
 import AnimatedBeamNetworkUI from "@/components/node-connection"
 
@@ -32,6 +31,8 @@ export default function Home() {
         <Hero />
 
         <ShowcaseMarquee />
+
+        
 
         <SectionFrame>
           <AnimatedCardStack />
