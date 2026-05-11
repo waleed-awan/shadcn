@@ -5,6 +5,7 @@ import { Marquee } from "@/components/ui/marquee";
 import { ArrowUpRight } from "lucide-react";
 import { Caveat } from "next/font/google";
 import DashboardApplicationBlock from "./FigmaHeroSection";
+import { motion } from "framer-motion";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "600"] });
 
@@ -15,19 +16,38 @@ export default function BlocksSection() {
     <div className="w-full border-t border-gray-300 border-dashed bg-white">
 
       {/* HERO SECTION */}
-      <section className="w-full py-16 flex items-center justify-center">
+      <motion.section
+        initial={{ opacity: 0, y: 80 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="w-full py-16 flex items-center justify-center"
+      >
         <div className="max-w-5xl text-center px-4">
 
           {/* Copy Paste Label */}
-          <div className="inline-block mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="inline-block mb-8"
+          >
             <p className={`${caveat.className} text-lg text-gray-700`}>
               Copy-Paste Blocks
             </p>
+
             <div className="h-0.5 bg-black mt-1 w-full"></div>
-          </div>
+          </motion.div>
 
           {/* Heading */}
-          <h1 className="text-5xl leading-tight font-semibold tracking-tight text-black whitespace-nowrap">
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-5xl leading-tight font-semibold tracking-tight text-black whitespace-nowrap"
+          >
             Explore 700+ Free & Pro{" "}
             <span className="relative inline-block">
               Shadcn UI Blocks
@@ -48,22 +68,42 @@ export default function BlocksSection() {
                 />
               </svg>
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Description */}
-          <p className="mt-6 text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
-            Quickly build stunning web interfaces - from landing pages and marketing sites to e-commerce and dashboards with unlimited theme options.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            viewport={{ once: true }}
+            className="mt-6 text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto"
+          >
+            Quickly build stunning web interfaces - from landing pages and
+            marketing sites to e-commerce and dashboards with unlimited theme
+            options.
+          </motion.p>
         </div>
-      </section>
+      </motion.section>
 
       {/* MERGED BLOCK SECTION */}
-      <div className="w-full bg-white">
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.15 }}
+        className="w-full bg-white"
+      >
         <div className="mx-auto max-w-7xl overflow-hidden border-y border-dashed border-gray-300">
           <div className="grid divide-x divide-dashed divide-gray-300 lg:grid-cols-2">
 
             {/* LEFT */}
-            <div className="group relative space-y-6 p-8">
+            <motion.div
+              initial={{ opacity: 0, x: -80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              viewport={{ once: true }}
+              className="group relative space-y-6 p-8"
+            >
               <div className="flex items-start justify-between">
                 <h2 className="text-2xl font-semibold text-black">
                   Marketing UI Blocks
@@ -79,14 +119,28 @@ export default function BlocksSection() {
                 your site's design and user experience.
               </p>
 
-              <div className="relative mt-6 overflow-hidden">
+              {/* MARQUEE */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3, duration: 0.7 }}
+                viewport={{ once: true }}
+                className="relative mt-6 overflow-hidden"
+              >
                 <Marquee
                   pauseOnHover
                   className="[mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] [--duration:20s]"
                 >
                   {images.map((src, i) => (
-                    <div
+                    <motion.div
                       key={i}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{
+                        delay: i * 0.1,
+                        duration: 0.5,
+                      }}
+                      viewport={{ once: true }}
                       className="relative mx-3 h-36 w-60 overflow-hidden rounded-xl border shadow-sm transition hover:scale-105"
                     >
                       <Image
@@ -95,19 +149,25 @@ export default function BlocksSection() {
                         fill
                         className="object-cover"
                       />
-                    </div>
+                    </motion.div>
                   ))}
                 </Marquee>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* RIGHT */}
-            <DashboardApplicationBlock/>
+            <motion.div
+              initial={{ opacity: 0, x: 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <DashboardApplicationBlock />
+            </motion.div>
 
           </div>
         </div>
-      </div>
-
+      </motion.div>
     </div>
   );
 }
