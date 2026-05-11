@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
+import { motion } from "framer-motion"
 import { Caveat } from "next/font/google"
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "600"] })
@@ -62,7 +63,12 @@ const faqSections = {
 
 function FAQBlock({ title, questions }: any) {
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+    >
       <h2 className="mb-6 text-2xl font-semibold text-black">{title}</h2>
 
       <Accordion type="single" collapsible className="w-full">
@@ -70,7 +76,7 @@ function FAQBlock({ title, questions }: any) {
           <AccordionItem
             key={i}
             value={`${title}-${i}`}
-            className="border-b  border-dashed border-gray-300 transition hover:bg-gray-50"
+            className="border-b border-dashed border-gray-300 transition hover:bg-gray-50"
           >
             <AccordionTrigger className="py-5 text-left text-base text-black hover:no-underline">
               {q}
@@ -82,28 +88,32 @@ function FAQBlock({ title, questions }: any) {
           </AccordionItem>
         ))}
       </Accordion>
-    </div>
+    </motion.div>
   )
 }
 
 export default function FAQPage() {
   return (
-    <main className=" bg-white">
+    <main className="bg-white">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        {/* HEADER + FAQ */}
+
         <section className="flex w-full flex-col items-center justify-center">
-          <div className="max-w-5xl px-4 text-center">
-            {/* Label */}
+
+          {/* HEADER */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-5xl px-4 text-center"
+          >
             <div className="mb-8 inline-block">
-              <p
-                className={`${caveat.className} text-2xl tracking-wide text-gray-800`}
-              >
+              <p className={`${caveat.className} text-2xl tracking-wide text-gray-800`}>
                 FAQ
               </p>
               <div className="mt-1 h-0.5 w-full bg-black"></div>
             </div>
 
-            {/* Heading */}
             <h1 className="text-3xl leading-tight font-semibold tracking-tight text-black sm:text-4xl md:text-5xl">
               Any{" "}
               <span className="relative mx-1 sm:mx-2 md:mx-1 inline-block">
@@ -126,15 +136,14 @@ export default function FAQPage() {
               </span>
             </h1>
 
-            {/* Description */}
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-500">
-              Browse through these FAQs to find answers to commonly asked
-              questions.
+              Browse through these FAQs to find answers to commonly asked questions.
             </p>
-          </div>
+          </motion.div>
 
           {/* FAQ SECTION */}
           <div className="mt-16 grid w-full max-w-7xl grid-cols-1 gap-12 px-4 lg:grid-cols-2">
+            
             {/* LEFT */}
             <div className="space-y-12 border-dashed border-gray-300 lg:border-r lg:pr-12">
               <FAQBlock
@@ -160,8 +169,10 @@ export default function FAQPage() {
                 questions={faqSections.support.questions}
               />
             </div>
+
           </div>
         </section>
+
       </div>
     </main>
   )

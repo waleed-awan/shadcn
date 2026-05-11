@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function LineAnimation() {
   return (
-    <div className="flex flex-col gap-8 overflow-hidden border-2 border-dotted border-zinc-200 bg-white pt-8 pb-6 w-full">
+    <div className="flex flex-col gap-8 overflow-hidden border-b border-r border-dotted border-zinc-300 bg-white pt-8 pb-6 w-full">
 
       {/* Content */}
       <div className="w-full space-y-3.5 px-4 sm:px-6 lg:px-8">

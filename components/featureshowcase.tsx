@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function FeatureShowcase() {
   return (
-    <div className="flex flex-col justify-between h-1/2 gap-6 border-y-2 border-dotted border-gray-200 overflow-hidden pt-8 w-full">
+    <div className="flex flex-col justify-between h-1/2 gap-6 border-b border-r border-dotted border-zinc-300 overflow-hidden pt-8 w-full">
 
       {/* Text */}
       <div className="space-y-3.5 px-4 sm:px-6 lg:px-8">

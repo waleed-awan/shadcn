@@ -2,14 +2,20 @@
 
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function DashboardSection() {
   return (
     <section className="w-full bg-white py-10">
       <div className="max-w-[1400px] mx-auto px-6 border-y border-dotted border-gray-300 py-10 grid lg:grid-cols-[1fr_1.4fr] gap-8 items-center">
 
-        {/* LEFT CONTENT */}
-        <div>
+        {/* LEFT CONTENT (bottom to top animation) */}
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <span className="inline-block mb-4 rounded-full bg-white border border-gray-300 px-4 py-1 text-sm text-gray-700">
             Coming Soon
           </span>
@@ -37,13 +43,23 @@ export default function DashboardSection() {
             Explore more
             <ArrowRight size={16} />
           </button>
-        </div>
+        </motion.div>
 
-        {/* RIGHT IMAGES */}
-        <div className="flex gap-3 overflow-x-visible">
+        {/* RIGHT IMAGES (bottom to top animation) */}
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="flex gap-3 overflow-x-visible"
+        >
           {["/1.png", "/2.png", "/3.png"].map((src, i) => (
-            <div
+            <motion.div
               key={i}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
               className="group relative bg-gray-200 rounded-lg overflow-hidden w-[280px] h-52"
             >
               <div className="absolute inset-0 pl-4 pt-4 transition-all duration-300 group-hover:pl-0 group-hover:pt-0">
@@ -51,9 +67,9 @@ export default function DashboardSection() {
                   <Image src={src} alt="dashboard" fill className="object-cover" />
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>

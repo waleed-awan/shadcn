@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { FaGithub, FaYoutube, FaXTwitter, FaDiscord } from "react-icons/fa6";
 
@@ -43,10 +44,22 @@ const legal: string[] = [
 export default function Footer() {
   return (
     <footer className="border-t border-gray-200 bg-white">
-      <div className="mx-auto grid max-w-7xl gap-10 border-b border-gray-200 px-4 py-10 sm:grid-cols-2 sm:px-6 sm:py-16 lg:grid-cols-6 lg:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 80 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="mx-auto grid max-w-7xl gap-10 border-b border-gray-200 px-4 py-10 sm:grid-cols-2 sm:px-6 sm:py-16 lg:grid-cols-6 lg:px-8"
+      >
 
         {/* LEFT SECTION */}
-        <div className="flex flex-col items-start gap-5 lg:col-span-2">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 0.7 }}
+          className="flex flex-col items-start gap-5 lg:col-span-2"
+        >
 
           {/* LOGO */}
           <Link href="/" className="flex items-center gap-3">
@@ -81,18 +94,16 @@ export default function Footer() {
 
           {/* SOCIALS */}
           <div className="flex items-center gap-4 text-gray-700">
-            <Link href="#"><FaGithub className="size-5 hover:text-black" /></Link>
-            <Link href="#"><FaYoutube className="size-5 hover:text-black" /></Link>
-            <Link href="#"><FaDiscord className="size-5 hover:text-black" /></Link>
-            <Link href="#"><FaXTwitter className="size-5 hover:text-black" /></Link>
+            <FaGithub className="size-5 hover:text-black" />
+            <FaYoutube className="size-5 hover:text-black" />
+            <FaDiscord className="size-5 hover:text-black" />
+            <FaXTwitter className="size-5 hover:text-black" />
           </div>
 
-          {/* TEXT */}
           <p className="text-sm text-gray-500">
             This project is independent and not affiliated with Figma or shadcn/ui.
           </p>
 
-          {/* BUTTON */}
           <Link
             href="#"
             className="inline-flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-800 transition hover:bg-gray-100"
@@ -105,41 +116,40 @@ export default function Footer() {
           <p className="text-sm text-gray-500">
             This project wouldn&apos;t be possible without the open-source ecosystem.
           </p>
-        </div>
+        </motion.div>
 
         {/* COLUMNS */}
-        <FooterColumn title="Products" items={products} />
-        <FooterColumn title="Resources" items={resources} />
-        <FooterColumn title="Help and Support" items={support} />
-        <FooterColumn title="Legal" items={legal} />
+        {[ 
+          { title: "Products", items: products },
+          { title: "Resources", items: resources },
+          { title: "Help and Support", items: support },
+          { title: "Legal", items: legal },
+        ].map((col, i) => (
+          <motion.div
+            key={col.title}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1, duration: 0.7 }}
+            className="flex flex-col gap-5"
+          >
+            <h3 className="text-lg font-semibold text-gray-900">
+              {col.title}
+            </h3>
 
-      </div>
-    </footer>
-  );
-}
-
-interface FooterColumnProps {
-  title: string;
-  items: string[];
-}
-
-function FooterColumn({ title, items }: FooterColumnProps) {
-  return (
-    <div className="flex flex-col gap-5">
-      <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-
-      <ul className="space-y-3 text-gray-600">
-        {items.map((item) => (
-          <li key={item}>
-            <Link
-              href="#"
-              className="transition hover:text-black"
-            >
-              {item}
-            </Link>
-          </li>
+            <ul className="space-y-3 text-gray-600">
+              {col.items.map((item) => (
+                <li key={item}>
+                  <Link href="#" className="transition hover:text-black">
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         ))}
-      </ul>
-    </div>
+
+      </motion.div>
+    </footer>
   );
 }
