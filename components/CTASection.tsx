@@ -7,7 +7,7 @@ export default function CTASection() {
   return (
     <section
       id="cta"
-      className="overflow-x-hidden border-t border-dashed border-gray-300 bg-white pt-12 pb-24 sm:pt-14 sm:pb-32"
+      className="overflow-hidden border-t border-dashed border-gray-300 bg-white pt-12 pb-24 sm:pt-14 sm:pb-32"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
@@ -46,38 +46,10 @@ export default function CTASection() {
                 stroke="currentColor"
                 strokeWidth="8"
               />
-              <line
-                x1="93.34"
-                y1="35.61"
-                x2="76.55"
-                y2="52.20"
-                stroke="currentColor"
-                strokeWidth="8"
-              />
-              <line
-                x1="51.76"
-                y1="77.06"
-                x2="34.97"
-                y2="93.65"
-                stroke="currentColor"
-                strokeWidth="8"
-              />
-              <line
-                x1="50.95"
-                y1="51.31"
-                x2="34.26"
-                y2="34.62"
-                stroke="currentColor"
-                strokeWidth="8"
-              />
-              <line
-                x1="93.16"
-                y1="93.63"
-                x2="76.46"
-                y2="76.94"
-                stroke="currentColor"
-                strokeWidth="8"
-              />
+              <line x1="93.34" y1="35.61" x2="76.55" y2="52.20" stroke="currentColor" strokeWidth="8" />
+              <line x1="51.76" y1="77.06" x2="34.97" y2="93.65" stroke="currentColor" strokeWidth="8" />
+              <line x1="50.95" y1="51.31" x2="34.26" y2="34.62" stroke="currentColor" strokeWidth="8" />
+              <line x1="93.16" y1="93.63" x2="76.46" y2="76.94" stroke="currentColor" strokeWidth="8" />
             </svg>
           </motion.div>
 
@@ -104,38 +76,10 @@ export default function CTASection() {
                 stroke="currentColor"
                 strokeWidth="8"
               />
-              <line
-                x1="93.34"
-                y1="35.61"
-                x2="76.55"
-                y2="52.20"
-                stroke="currentColor"
-                strokeWidth="8"
-              />
-              <line
-                x1="51.76"
-                y1="77.06"
-                x2="34.97"
-                y2="93.65"
-                stroke="currentColor"
-                strokeWidth="8"
-              />
-              <line
-                x1="50.95"
-                y1="51.31"
-                x2="34.26"
-                y2="34.62"
-                stroke="currentColor"
-                strokeWidth="8"
-              />
-              <line
-                x1="93.16"
-                y1="93.63"
-                x2="76.46"
-                y2="76.94"
-                stroke="currentColor"
-                strokeWidth="8"
-              />
+              <line x1="93.34" y1="35.61" x2="76.55" y2="52.20" stroke="currentColor" strokeWidth="8" />
+              <line x1="51.76" y1="77.06" x2="34.97" y2="93.65" stroke="currentColor" strokeWidth="8" />
+              <line x1="50.95" y1="51.31" x2="34.26" y2="34.62" stroke="currentColor" strokeWidth="8" />
+              <line x1="93.16" y1="93.63" x2="76.46" y2="76.94" stroke="currentColor" strokeWidth="8" />
             </svg>
           </motion.div>
 
@@ -167,9 +111,10 @@ export default function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="absolute left-1/2 top-full z-10 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 px-4"
+            className="absolute left-1/2 top-full z-10 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 px-4 "
           >
             <div className="rounded-[20px] border-2 border-[#2d2d2d] bg-[#f3f3f3] p-2.5 shadow-[0_15px_40px_rgba(0,0,0,0.20)]">
+
               <div className="flex items-center gap-2.5">
 
                 <input

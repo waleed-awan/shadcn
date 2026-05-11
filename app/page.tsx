@@ -91,7 +91,7 @@ export default function Home() {
 
         <SectionFrame>
           <Footer />
-        </SectionFrame>
+        </SectionFrame> 
       </div>
     </main>
   )
