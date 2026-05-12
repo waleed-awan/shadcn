@@ -1,8 +1,21 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Menu, Search, Moon } from "lucide-react"
+import {
+  Menu,
+  Search,
+  Moon,
+  ChevronDown,
+} from "lucide-react"
+
 import { FaGithub, FaXTwitter, FaDiscord } from "react-icons/fa6"
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 import { Sidebar } from "./sidebar"
 import { SearchModal } from "./search-modal"
@@ -10,6 +23,9 @@ import { SearchModal } from "./search-modal"
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+
+  const [aiOpen, setAiOpen] = useState(false)
+  const [resourcesOpen, setResourcesOpen] = useState(false)
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -26,19 +42,19 @@ export default function Navbar() {
   const btn =
     "cursor-pointer flex items-center justify-center transition-all duration-200 ease-out hover:scale-105 active:scale-95"
 
+  const menuClass =
+    "text-[13px] font-medium text-zinc-500 transition-all duration-200 hover:text-black"
+
   return (
     <>
       {/* NAVBAR */}
       <header className="fixed top-0 left-0 z-50 w-full">
-        {/* OUTER WRAPPER */}
-        <div className="w-full border-b border-white/20 bg-white/30 backdrop-blur-xl">
-          
-          {/* CONTAINER */}
-          <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-3 sm:h-20 sm:px-5">
-            
+        <div className="border-b border-white/20 bg-white/30 backdrop-blur-xl">
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6">
+
             {/* LEFT */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              
+            <div className="flex items-center gap-3">
+
               {/* LOGO */}
               <div
                 className={`${btn} size-9 overflow-hidden rounded-full sm:size-10`}
@@ -107,19 +123,124 @@ export default function Navbar() {
                 </svg>
               </div>
 
-              {/* TEXT */}
-              <h1 className="hidden cursor-pointer text-lg font-semibold text-black sm:block sm:text-xl">
+              {/* TITLE */}
+              <h1 className="hidden text-lg font-semibold text-black sm:block">
                 shadcn/studio
               </h1>
+
+              {/* MENU */}
+              <nav className="ml-5 hidden items-center gap-5 2xl:flex">
+
+                <a
+                  href="#"
+                  className={menuClass}
+                >
+                  Components
+                </a>
+
+                <a
+                  href="#"
+                  className={menuClass}
+                >
+                  Blocks
+                </a>
+
+                <a
+                  href="#"
+                  className="text-[13px] font-medium text-black"
+                >
+                  Templates
+                </a>
+
+                <a
+                  href="#"
+                  className={menuClass}
+                >
+                  Figma
+                </a>
+
+                <a
+                  href="#"
+                  className={menuClass}
+                >
+                  Theme Generator
+                </a>
+
+               {/* AI TOOLS */}
+<DropdownMenu
+  open={aiOpen}
+  onOpenChange={setAiOpen}
+>
+  <div
+    onMouseEnter={() => setAiOpen(true)}
+    onMouseLeave={() => setAiOpen(false)}
+  >
+    <DropdownMenuTrigger className="flex items-center gap-1 text-[13px] font-medium text-black outline-none transition">
+      AI Tools
+      <ChevronDown className="size-3.5 text-black" />
+    </DropdownMenuTrigger>
+
+    <DropdownMenuContent
+      align="start"
+      className="mt-3 w-52 rounded-xl border border-zinc-200 bg-white/95 p-2 shadow-2xl backdrop-blur-xl"
+    >
+      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
+        AI Builder
+      </DropdownMenuItem>
+
+      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
+        AI Components
+      </DropdownMenuItem>
+
+      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
+        AI Templates
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </div>
+</DropdownMenu>
+
+{/* RESOURCES */}
+<DropdownMenu
+  open={resourcesOpen}
+  onOpenChange={setResourcesOpen}
+>
+  <div
+    onMouseEnter={() => setResourcesOpen(true)}
+    onMouseLeave={() => setResourcesOpen(false)}
+  >
+    <DropdownMenuTrigger className="flex items-center gap-1 text-[13px] font-medium text-black outline-none transition">
+      Resources
+      <ChevronDown className="size-3.5 text-black" />
+    </DropdownMenuTrigger>
+
+    <DropdownMenuContent
+      align="start"
+      className="mt-3 w-52 rounded-xl border border-zinc-200 bg-white/95 p-2 shadow-2xl backdrop-blur-xl"
+    >
+      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
+        Documentation
+      </DropdownMenuItem>
+
+      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
+        Blog
+      </DropdownMenuItem>
+
+      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
+        Community
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </div>
+</DropdownMenu>
+              </nav>
             </div>
 
             {/* RIGHT */}
-            <div className="flex items-center gap-1 sm:gap-2">
-              
-              {/* MENU */}
+            <div className="flex items-center gap-2">
+
+              {/* HAMBURGER */}
               <button
                 onClick={() => setOpen(true)}
-                className={`${btn} size-8 rounded-sm border border-zinc-200 bg-white/70 backdrop-blur hover:bg-white hover:shadow-md sm:size-9`}
+                className={`${btn} flex size-8 rounded-sm border border-zinc-200 bg-white/70 backdrop-blur hover:bg-white hover:shadow-md 2xl:hidden sm:size-9`}
               >
                 <Menu className="size-4 text-black" />
               </button>
@@ -140,30 +261,30 @@ export default function Navbar() {
               </button>
 
               {/* DIVIDER */}
-              <div className="mx-1 hidden h-6 w-px bg-zinc-300/50 sm:block" />
+              <div className="mx-1 hidden h-6 w-px bg-zinc-300/50 lg:block" />
 
               {/* SOCIALS */}
-              <div className="hidden items-center gap-2 md:flex">
+              <div className="hidden items-center gap-2 lg:flex">
                 <button className={`${btn} size-8`}>
-                  <FaGithub className="size-5 fill-black text-black" />
+                  <FaGithub className="size-4 text-black" />
                 </button>
 
-                <button className={`${btn} size-8`}>
-                  <FaXTwitter className="size-5 fill-black text-black" />
+                <button className={`${btn} size-4`}>
+                  <FaXTwitter className="size-4 text-black" />
                 </button>
 
-                <button className={`${btn} size-8`}>
-                  <FaDiscord className="size-5 fill-black text-black" />
+                <button className={`${btn} size-4`}>
+                  <FaDiscord className="size-4 text-black" />
                 </button>
               </div>
 
               {/* SIGN IN */}
-              <button className="cursor-pointer rounded-sm border border-zinc-200 bg-white/70 px-2 py-1.5 text-xs text-black backdrop-blur transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-md active:scale-95 sm:px-4 sm:py-2 sm:text-sm">
+              <button className="rounded-sm border border-zinc-200 bg-white/70 px-3 py-2 text-sm text-black backdrop-blur transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-md">
                 Sign in
               </button>
 
-              {/* GET ACCESS */}
-              <button className="hidden cursor-pointer items-center gap-2 rounded-sm border border-zinc-800 bg-black px-5 py-2 text-sm text-white transition-all duration-200 hover:scale-105 hover:opacity-90 hover:shadow-lg active:scale-95 md:flex">
+              {/* ACCESS */}
+              <button className="hidden items-center gap-2 rounded-sm bg-black px-5 py-2 text-sm text-white transition-all duration-200 hover:scale-105 hover:opacity-90 md:flex">
                 Get all access
               </button>
             </div>
