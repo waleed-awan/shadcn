@@ -25,7 +25,6 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       {/* GLOBAL BOXED LAYOUT */}
       <div className="mx-auto w-full max-w-7xl border-x border-dashed border-zinc-200">
-        <Navbar />
 
         <Hero />
 
