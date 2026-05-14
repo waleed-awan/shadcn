@@ -54,7 +54,7 @@ export default function Navbar() {
           <div className="border-dashed border-x border-gray-200 mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6">
 
             {/* LEFT */}
-            <div className="flex items-center gap-3">
+            <Link href={"/"} className="flex items-center gap-3">
 
               {/* LOGO */}
               <Link
@@ -264,7 +264,7 @@ export default function Navbar() {
                   </div>
                 </DropdownMenu>
               </nav>
-            </div>
+            </Link>
 
             {/* RIGHT */}
             <div className="flex items-center gap-2">
