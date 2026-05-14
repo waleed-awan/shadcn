@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import {
   Menu,
@@ -56,7 +57,8 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
 
               {/* LOGO */}
-              <div
+              <Link
+                href="/"
                 className={`${btn} size-9 overflow-hidden rounded-full sm:size-10`}
               >
                 <svg
@@ -121,7 +123,7 @@ export default function Navbar() {
                     strokeWidth="20"
                   />
                 </svg>
-              </div>
+              </Link>
 
               {/* TITLE */}
               <h1 className="hidden text-lg font-semibold text-black sm:block">
@@ -131,106 +133,136 @@ export default function Navbar() {
               {/* MENU */}
               <nav className="ml-5 hidden items-center gap-5 2xl:flex">
 
-                <a
-                  href="#"
+                <Link
+                  href="/components"
                   className={menuClass}
                 >
                   Components
-                </a>
+                </Link>
 
-                <a
-                  href="#"
+                <Link
+                  href="/pages/blocks"
                   className={menuClass}
                 >
                   Blocks
-                </a>
+                </Link>
 
-                <a
-                  href="#"
+                <Link
+                  href="/pages/templates"
                   className="text-[13px] font-medium text-black"
                 >
                   Templates
-                </a>
+                </Link>
 
-                <a
-                  href="#"
+                <Link
+                  href="/figma"
                   className={menuClass}
                 >
                   Figma
-                </a>
+                </Link>
 
-                <a
-                  href="#"
+                <Link
+                  href="/theme-generator"
                   className={menuClass}
                 >
                   Theme Generator
-                </a>
+                </Link>
 
-               {/* AI TOOLS */}
-<DropdownMenu
-  open={aiOpen}
-  onOpenChange={setAiOpen}
->
-  <div
-    onMouseEnter={() => setAiOpen(true)}
-    onMouseLeave={() => setAiOpen(false)}
-  >
-    <DropdownMenuTrigger className="flex items-center gap-1 text-[13px] font-medium text-black outline-none transition">
-      AI Tools
-      <ChevronDown className="size-3.5 text-black" />
-    </DropdownMenuTrigger>
+                {/* AI TOOLS */}
+                <DropdownMenu
+                  open={aiOpen}
+                  onOpenChange={setAiOpen}
+                >
+                  <div
+                    onMouseEnter={() => setAiOpen(true)}
+                    onMouseLeave={() => setAiOpen(false)}
+                  >
+                    <DropdownMenuTrigger className="flex items-center gap-1 text-[13px] font-medium text-black outline-none transition">
+                      AI Tools
+                      <ChevronDown className="size-3.5 text-black" />
+                    </DropdownMenuTrigger>
 
-    <DropdownMenuContent
-      align="start"
-      className="mt-3 w-52 rounded-xl border border-zinc-200 bg-white/95 p-2 shadow-2xl backdrop-blur-xl"
-    >
-      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
-        AI Builder
-      </DropdownMenuItem>
+                    <DropdownMenuContent
+                      align="start"
+                      className="mt-3 w-52 rounded-xl border border-zinc-200 bg-white/95 p-2 shadow-2xl backdrop-blur-xl"
+                    >
+                      <DropdownMenuItem asChild>
+                        <Link
+                          href="/ai-builder"
+                          className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100"
+                        >
+                          AI Builder
+                        </Link>
+                      </DropdownMenuItem>
 
-      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
-        AI Components
-      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          href="/ai-components"
+                          className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100"
+                        >
+                          AI Components
+                        </Link>
+                      </DropdownMenuItem>
 
-      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
-        AI Templates
-      </DropdownMenuItem>
-    </DropdownMenuContent>
-  </div>
-</DropdownMenu>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          href="/ai-templates"
+                          className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100"
+                        >
+                          AI Templates
+                        </Link>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </div>
+                </DropdownMenu>
 
-{/* RESOURCES */}
-<DropdownMenu
-  open={resourcesOpen}
-  onOpenChange={setResourcesOpen}
->
-  <div
-    onMouseEnter={() => setResourcesOpen(true)}
-    onMouseLeave={() => setResourcesOpen(false)}
-  >
-    <DropdownMenuTrigger className="flex items-center gap-1 text-[13px] font-medium text-black outline-none transition">
-      Resources
-      <ChevronDown className="size-3.5 text-black" />
-    </DropdownMenuTrigger>
+                {/* RESOURCES */}
+                <DropdownMenu
+                  open={resourcesOpen}
+                  onOpenChange={setResourcesOpen}
+                >
+                  <div
+                    onMouseEnter={() => setResourcesOpen(true)}
+                    onMouseLeave={() => setResourcesOpen(false)}
+                  >
+                    <DropdownMenuTrigger className="flex items-center gap-1 text-[13px] font-medium text-black outline-none transition">
+                      Resources
+                      <ChevronDown className="size-3.5 text-black" />
+                    </DropdownMenuTrigger>
 
-    <DropdownMenuContent
-      align="start"
-      className="mt-3 w-52 rounded-xl border border-zinc-200 bg-white/95 p-2 shadow-2xl backdrop-blur-xl"
-    >
-      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
-        Documentation
-      </DropdownMenuItem>
+                    <DropdownMenuContent
+                      align="start"
+                      className="mt-3 w-52 rounded-xl border border-zinc-200 bg-white/95 p-2 shadow-2xl backdrop-blur-xl"
+                    >
+                      <DropdownMenuItem asChild>
+                        <Link
+                          href="/docs"
+                          className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100"
+                        >
+                          Documentation
+                        </Link>
+                      </DropdownMenuItem>
 
-      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
-        Blog
-      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          href="/blog"
+                          className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100"
+                        >
+                          Blog
+                        </Link>
+                      </DropdownMenuItem>
 
-      <DropdownMenuItem className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100 hover:text-black focus:bg-zinc-100 focus:text-black">
-        Community
-      </DropdownMenuItem>
-    </DropdownMenuContent>
-  </div>
-</DropdownMenu>
+                      <DropdownMenuItem asChild>
+                        <Link
+                          href="/community"
+                          className="cursor-pointer rounded-lg px-3 py-2 text-sm text-black hover:bg-zinc-100"
+                        >
+                          Community
+                        </Link>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </div>
+                </DropdownMenu>
               </nav>
             </div>
 
@@ -265,28 +297,34 @@ export default function Navbar() {
 
               {/* SOCIALS */}
               <div className="hidden items-center gap-2 lg:flex">
-                <button className={`${btn} size-8`}>
+                <Link href="https://github.com" className={`${btn} size-8`}>
                   <FaGithub className="size-4 text-black" />
-                </button>
+                </Link>
 
-                <button className={`${btn} size-4`}>
+                <Link href="https://x.com" className={`${btn} size-4`}>
                   <FaXTwitter className="size-4 text-black" />
-                </button>
+                </Link>
 
-                <button className={`${btn} size-4`}>
+                <Link href="https://discord.com" className={`${btn} size-4`}>
                   <FaDiscord className="size-4 text-black" />
-                </button>
+                </Link>
               </div>
 
               {/* SIGN IN */}
-              <button className="rounded-sm border border-zinc-200 bg-white/70 px-3 py-2 text-sm text-black backdrop-blur transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-md">
+              <Link
+                href="/signin"
+                className="rounded-sm border border-zinc-200 bg-white/70 px-3 py-2 text-sm text-black backdrop-blur transition-all duration-200 hover:scale-105 hover:bg-white hover:shadow-md"
+              >
                 Sign in
-              </button>
+              </Link>
 
               {/* ACCESS */}
-              <button className="hidden items-center gap-2 rounded-sm bg-black px-5 py-2 text-sm text-white transition-all duration-200 hover:scale-105 hover:opacity-90 md:flex">
+              <Link
+                href="/pricing"
+                className="hidden items-center gap-2 rounded-sm bg-black px-5 py-2 text-sm text-white transition-all duration-200 hover:scale-105 hover:opacity-90 md:flex"
+              >
                 Get all access
-              </button>
+              </Link>
             </div>
           </div>
         </div>
