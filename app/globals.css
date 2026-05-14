@@ -5,12 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 
-
 html,
 body {
-  overflow-x: hidden;
+  width: 100%;
+  overflow-x: clip;
 }
-
 
 @theme inline {
     --font-heading: var(--font-sans);

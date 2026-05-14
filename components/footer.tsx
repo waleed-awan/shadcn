@@ -42,8 +42,8 @@ const legal: string[] = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-white">
-      <div className="mx-auto grid max-w-7xl gap-10 border-b border-gray-200 px-4 py-10 sm:grid-cols-2 sm:px-6 sm:py-16 lg:grid-cols-6 lg:px-8">
+    <footer className="border-t border-gray-200 border-dashed bg-white">
+      <div className="mx-auto grid max-w-7xl gap-10 border-dashed border-x border-gray-200 px-4 py-10 sm:grid-cols-2 sm:px-6 sm:py-16 lg:grid-cols-6 lg:px-8">
 
         {/* LEFT SECTION */}
         <div className="flex flex-col items-start gap-5 lg:col-span-2">
