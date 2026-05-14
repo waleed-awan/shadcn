@@ -36,60 +36,6 @@ const blockImages = [
 
   "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/gallery.png",
   "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/gallery-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/blog.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/blog-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/about-us.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/about-us-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/contact-us.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/contact-us-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/download.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/download-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/timeline.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/timeline-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/navbar.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/navbar-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/footer.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/footer-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/login.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/login-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/register.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/register-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/forgot-password.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/forgot-password-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/reset-password.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/reset-password-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/verify-email.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/verify-email-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/two-factor-authentication.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/two-factor-authentication-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/app-integration.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/app-integration-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/cookies.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/cookies-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/compare.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/compare-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/error.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/error-dark.png",
-
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/user-schedule.png",
-  "https://cdn.shadcnstudio.com/ss-assets/landing-page/blocks-pages/marketing-ui/user-schedule-dark.png",
 ]
 
 const generateBlocks = (baseCount: number) => {
@@ -175,15 +121,19 @@ const sections = [
 export default function Page() {
   const [searchQuery, setSearchQuery] = useState("")
   const [activeSection, setActiveSection] = useState("marketing")
+
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({})
 
-
-  
   const scrollToSection = (sectionId: string) => {
     const element = sectionRefs.current[sectionId]
+
     if (element) {
       setActiveSection(sectionId)
-      element.scrollIntoView({ behavior: "smooth" })
+
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
     }
   }
 
@@ -201,7 +151,8 @@ export default function Page() {
       for (const [id, element] of Object.entries(sectionRefs.current)) {
         if (element) {
           const rect = element.getBoundingClientRect()
-          if (rect.top <= 100 && rect.bottom >= 100) {
+
+          if (rect.top <= 120 && rect.bottom >= 120) {
             setActiveSection(id)
             break
           }
@@ -210,25 +161,28 @@ export default function Page() {
     }
 
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
   }, [])
 
   return (
-    <div className=" absolute -z-10 min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-20 z-50 w-full border-b border-white/30 bg-white/60 shadow-sm backdrop-blur-xl">
+    <div className="relative w-full bg-white">
+      {/* HEADER */}
+      <header className="sticky top-20 z-10 w-full border-b border-gray-200 bg-white/80 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Navigation */}
-            <nav className="flex items-center gap-8">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            {/* NAVIGATION */}
+            <nav className="flex flex-wrap items-center gap-6">
               {sections.map((section) => (
                 <button
                   key={section.id}
                   onClick={() => scrollToSection(section.id)}
-                  className={`text-lg font-normal transition-colors ${
+                  className={`text-sm font-medium transition-all sm:text-base ${
                     activeSection === section.id
-                      ? "border-b-2 border-black pb-4 text-black"
-                      : "text-gray-700 hover:text-black"
+                      ? "border-b-2 border-black pb-2 text-black"
+                      : "text-gray-600 hover:text-black"
                   }`}
                 >
                   {section.title}
@@ -236,74 +190,80 @@ export default function Page() {
               ))}
             </nav>
 
-            {/* Search */}
-            <div className="relative w-64">
+            {/* SEARCH */}
+            <div className="relative w-full sm:w-72">
               <Search className="absolute top-3 left-3 h-5 w-5 text-gray-400" />
+
               <input
                 type="text"
                 placeholder="Search Blocks..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-lg border border-gray-300/50 bg-white/40 py-2 pr-4 pl-10 text-black backdrop-blur-md transition-all focus:bg-white/70 focus:ring-2 focus:ring-gray-200 focus:outline-none"
+                className="w-full rounded-xl border border-gray-300 bg-white py-2.5 pr-4 pl-10 text-sm text-black outline-none transition-all focus:border-black"
               />
             </div>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="mx-auto max-w-7xl px-8 py-12">
+      {/* MAIN CONTENT */}
+      <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {filteredSections.map((section) => (
           <section
             key={section.id}
             ref={(el) => {
-              if (el) sectionRefs.current[section.id] = el
+              if (el) {
+                sectionRefs.current[section.id] = el
+              }
             }}
-            className="mb-16"
+            className="mb-20 scroll-mt-28"
           >
-            {/* Section Header */}
-            <div className="mb-12">
-              <h1 className="mb-4 text-4xl font-bold text-black">
+            {/* SECTION HEADER */}
+            <div className="mb-10">
+              <h1 className="mb-4 text-3xl font-bold text-black sm:text-4xl">
                 {section.heading}
               </h1>
-              <p className="max-w-2xl text-lg text-gray-600">
+
+              <p className="max-w-2xl text-base text-gray-600 sm:text-lg">
                 {section.description}
               </p>
             </div>
 
-            {/* Blocks Grid */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
+            {/* GRID */}
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {section.blocks.map((card) => (
                 <div
                   key={card.id}
-                  className="flex h-full cursor-pointer flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-md"
+                  className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
-                  {/* Card Image Container */}
-                  <div className="relative flex min-h-40 w-full flex-1 items-center justify-center overflow-hidden bg-gray-50 p-3 sm:min-h-48 sm:p-4">
+                  {/* IMAGE */}
+                  <div className="relative flex min-h-48 items-center justify-center overflow-hidden bg-gray-50 p-4">
                     <img
                       src={card.image}
                       alt={card.title}
-                      className="h-full w-full object-contain"
+                      className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                     />
-                    {/* HOT Badge */}
+
                     {card.isHot && (
-                      <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-red-600 px-2 py-0.5 text-xs font-bold text-white sm:top-3 sm:right-3 sm:px-2.5 sm:py-1">
+                      <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white">
                         <span>🔥</span>
                         <span>HOT</span>
                       </div>
                     )}
                   </div>
 
-                  {/* Card Footer */}
-                  <div className="border-t border-gray-200 p-3 sm:p-4">
-                    <h3 className="mb-2 line-clamp-2 text-sm font-bold text-gray-900 sm:mb-3 sm:text-base">
+                  {/* FOOTER */}
+                  <div className="border-t border-gray-200 p-4">
+                    <h3 className="mb-3 text-base font-bold text-gray-900">
                       {card.title}
                     </h3>
-                    <div className="flex items-center gap-1 text-xs sm:text-sm">
+
+                    <div className="flex items-center gap-2 text-sm">
                       <span className="font-medium text-gray-700">
                         {card.blocks} blocks
                       </span>
-                      {card.isNew && card.newCount && (
+
+                      {card.isNew && (
                         <span className="font-medium text-gray-500">
                           +{card.newCount} New
                         </span>
@@ -314,10 +274,11 @@ export default function Page() {
               ))}
             </div>
 
+            {/* EMPTY STATE */}
             {section.blocks.length === 0 && searchQuery && (
               <div className="py-12 text-center">
                 <p className="text-gray-500">
-                  No blocks found matching &quot;{searchQuery}&quot;
+                  No blocks found matching "{searchQuery}"
                 </p>
               </div>
             )}

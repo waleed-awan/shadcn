@@ -48,9 +48,9 @@ export default function Navbar() {
   return (
     <>
       {/* NAVBAR */}
-      <header className="fixed top-0 left-0 z-50 w-full">
+      <header className="border-dashed border-b border-gray-200 fixed top-0 left-0 z-50 w-full">
         <div className="border-b border-white/20 bg-white/30 backdrop-blur-xl">
-          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6">
+          <div className="border-dashed border-x border-gray-200 mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6">
 
             {/* LEFT */}
             <div className="flex items-center gap-3">

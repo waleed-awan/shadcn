@@ -4,10 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import ComponentLibrary from "@/components/cards";
+import BlocksContent from "@/components/blockscontent";
 
 export default function HeroBlocksSection() {
   return (
-    <section className="bg-white">
+    <section className="mx-auto w-full max-w-7xl border-x border-dashed border-zinc-200 bg-white">
       
       {/* HERO SECTION */}
       <div
@@ -101,6 +102,7 @@ export default function HeroBlocksSection() {
       {/* COMPONENT LIBRARY SECTION (FIXED OUTSIDE GRID ISSUE) */}
       <div>
         <ComponentLibrary />
+        <BlocksContent/>
       </div>
 
     </section>
