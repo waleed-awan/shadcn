@@ -26,7 +26,12 @@ function MarqueeItem({ item }: any) {
         alt="block"
         width={260}
         height={160}
-        className="h-28 sm:h-32 md:h-36 lg:h-40 w-auto rounded-md border bg-white shadow-sm"
+        className="
+          h-28 sm:h-32 md:h-36 lg:h-40 w-auto rounded-md
+          border border-zinc-200 dark:border-zinc-800
+          bg-white dark:bg-zinc-900
+          shadow-sm dark:shadow-black/40
+        "
       />
     </Link>
   )
@@ -39,7 +44,11 @@ export default function MagicMarquee() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative w-full overflow-hidden bg-white py-6"
+      className="
+        relative w-full overflow-hidden
+        bg-white dark:bg-black
+        py-6
+      "
     >
 
       {/* TOP ROW */}
@@ -49,7 +58,7 @@ export default function MagicMarquee() {
         ))}
       </Marquee>
 
-      {/* BOTTOM ROW (reverse direction) */}
+      {/* BOTTOM ROW */}
       <Marquee pauseOnHover reverse className="[--duration:45s]">
         {items.map((item, i) => (
           <MarqueeItem key={i} item={item} />
@@ -57,8 +66,8 @@ export default function MagicMarquee() {
       </Marquee>
 
       {/* fade edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white dark:from-black to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white dark:from-black to-transparent" />
 
     </motion.div>
   )

@@ -9,11 +9,12 @@ import { motion } from "framer-motion";
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["400", "600"] });
 
-const images = ["/1.png", "/2.png", "/3.png", "/4.png", "/5.png"];
+const lightImages = ["/1.png", "/2.png", "/3.png", "/4.png", "/5.png"];
+const darkImages = ["/1.png", "/2.png", "/3.png", "/4.png", "/5.png"];
 
 export default function BlocksSection() {
   return (
-    <div className="w-full border-t border-gray-300 border-dashed bg-white">
+    <div className="w-full border-t border-gray-300 border-dashed bg-white dark:bg-black dark:border-white/10">
 
       {/* HERO SECTION */}
       <motion.section
@@ -33,11 +34,13 @@ export default function BlocksSection() {
             viewport={{ once: true }}
             className="inline-block mb-8"
           >
-            <p className={`${caveat.className} text-lg text-gray-700`}>
+            <p
+              className={`${caveat.className} text-lg text-gray-700 dark:text-gray-300`}
+            >
               Copy-Paste Blocks
             </p>
 
-            <div className="h-0.5 bg-black mt-1 w-full"></div>
+            <div className="h-0.5 bg-black dark:bg-white mt-1 w-full"></div>
           </motion.div>
 
           {/* Heading */}
@@ -46,7 +49,7 @@ export default function BlocksSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-5xl leading-tight font-semibold tracking-tight text-black whitespace-nowrap"
+            className="text-5xl leading-tight font-semibold tracking-tight text-black dark:text-white whitespace-nowrap"
           >
             Explore 700+ Free & Pro{" "}
             <span className="relative inline-block">
@@ -62,9 +65,10 @@ export default function BlocksSection() {
               >
                 <path
                   d="M5 15 C 70 5, 230 5, 295 15"
-                  stroke="black"
+                  stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
+                  className="text-black dark:text-white"
                 />
               </svg>
             </span>
@@ -76,7 +80,7 @@ export default function BlocksSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
             viewport={{ once: true }}
-            className="mt-6 text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto"
+            className="mt-6 text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto"
           >
             Quickly build stunning web interfaces - from landing pages and
             marketing sites to e-commerce and dashboards with unlimited theme
@@ -91,10 +95,10 @@ export default function BlocksSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.15 }}
-        className="w-full bg-white"
+        className="w-full bg-white dark:bg-black"
       >
-        <div className="mx-auto max-w-7xl overflow-hidden border-y border-dashed border-gray-300">
-          <div className="grid divide-x divide-dashed divide-gray-300 lg:grid-cols-2">
+        <div className="mx-auto max-w-7xl overflow-hidden border-y border-dashed border-gray-300 dark:border-white/10">
+          <div className="grid divide-x divide-dashed divide-gray-300 dark:divide-white/10 lg:grid-cols-2">
 
             {/* LEFT */}
             <motion.div
@@ -105,16 +109,16 @@ export default function BlocksSection() {
               className="group relative space-y-6 p-8"
             >
               <div className="flex items-start justify-between">
-                <h2 className="text-2xl font-semibold text-black">
+                <h2 className="text-2xl font-semibold text-black dark:text-white">
                   Marketing UI Blocks
                 </h2>
 
-                <div className="flex h-9 w-9 translate-y-2 items-center justify-center rounded-full bg-black text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="flex h-9 w-9 translate-y-2 items-center justify-center rounded-full bg-black text-white dark:bg-white dark:text-black opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                   <ArrowUpRight size={16} />
                 </div>
               </div>
 
-              <p className="max-w-md text-gray-500">
+              <p className="max-w-md text-gray-500 dark:text-gray-400">
                 Boost conversions with stunning marketing UI blocks that enhance
                 your site's design and user experience.
               </p>
@@ -127,31 +131,63 @@ export default function BlocksSection() {
                 viewport={{ once: true }}
                 className="relative mt-6 overflow-hidden"
               >
-                <Marquee
-                  pauseOnHover
-                  className="[mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] [--duration:20s]"
-                >
-                  {images.map((src, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{
-                        delay: i * 0.1,
-                        duration: 0.5,
-                      }}
-                      viewport={{ once: true }}
-                      className="relative mx-3 h-36 w-60 overflow-hidden rounded-xl border shadow-sm transition hover:scale-105"
-                    >
-                      <Image
-                        src={src}
-                        alt="preview"
-                        fill
-                        className="object-cover"
-                      />
-                    </motion.div>
-                  ))}
-                </Marquee>
+                {/* LIGHT */}
+                <div className="dark:hidden">
+                  <Marquee
+                    pauseOnHover
+                    className="[mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] [--duration:20s]"
+                  >
+                    {lightImages.map((src, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: i * 0.1,
+                          duration: 0.5,
+                        }}
+                        viewport={{ once: true }}
+                        className="relative mx-3 h-36 w-60 overflow-hidden rounded-xl border shadow-sm transition hover:scale-105"
+                      >
+                        <Image
+                          src={src}
+                          alt="preview"
+                          fill
+                          className="object-cover"
+                        />
+                      </motion.div>
+                    ))}
+                  </Marquee>
+                </div>
+
+                {/* DARK */}
+                <div className="hidden dark:block">
+                  <Marquee
+                    pauseOnHover
+                    className="[mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] [--duration:20s]"
+                  >
+                    {darkImages.map((src, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                          delay: i * 0.1,
+                          duration: 0.5,
+                        }}
+                        viewport={{ once: true }}
+                        className="relative mx-3 h-36 w-60 overflow-hidden rounded-xl border border-white/10 shadow-sm transition hover:scale-105"
+                      >
+                        <Image
+                          src={src}
+                          alt="preview"
+                          fill
+                          className="object-cover"
+                        />
+                      </motion.div>
+                    ))}
+                  </Marquee>
+                </div>
               </motion.div>
             </motion.div>
 

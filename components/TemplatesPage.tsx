@@ -78,7 +78,7 @@ const TemplateCard = ({
   return (
     <div
       id={id}
-      className="relative scroll-mt-36 border-b border-dashed border-gray-200 py-10"
+      className="relative scroll-mt-36 border-b border-dashed border-gray-200 bg-white py-10 transition-colors dark:border-zinc-800 dark:bg-black"
     >
       <div className="p-4 sm:p-6 lg:p-8">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-center">
@@ -88,7 +88,7 @@ const TemplateCard = ({
               <Badge text={status} />
 
               <div className="flex gap-2">
-                <div className="grid h-7 w-7 place-items-center rounded border bg-white">
+                <div className="grid h-7 w-7 place-items-center rounded border bg-white dark:border-zinc-700 dark:bg-zinc-900">
                   <Image
                     src="https://cdn.shadcnstudio.com/ss-assets/brand-logo/figma-icon.png"
                     alt="figma"
@@ -97,7 +97,7 @@ const TemplateCard = ({
                   />
                 </div>
 
-                <div className="grid h-7 w-7 place-items-center rounded border bg-white">
+                <div className="grid h-7 w-7 place-items-center rounded border bg-white dark:border-zinc-700 dark:bg-zinc-900">
                   <Image
                     src="https://cdn.shadcnstudio.com/ss-assets/brand-logo/nextjs-logo.png"
                     alt="nextjs"
@@ -108,17 +108,19 @@ const TemplateCard = ({
               </div>
             </div>
 
-            <h3 className="text-xl font-semibold text-gray-900">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
               <a href={link} className="hover:underline">
                 {title}
               </a>
             </h3>
 
-            <p className="mt-2 text-gray-600">{description}</p>
+            <p className="mt-2 text-gray-600 dark:text-gray-400">
+              {description}
+            </p>
 
             <a
               href={link}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-800 sm:w-fit"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-gray-900 px-4 py-2 text-sm text-white transition hover:opacity-80 sm:w-fit dark:bg-white dark:text-black"
             >
               View Template
               <span>→</span>
@@ -134,7 +136,7 @@ const TemplateCard = ({
                   alt={title}
                   width={400}
                   height={250}
-                  className="rounded-xl border border-gray-200 shadow-sm transition duration-300 hover:-translate-y-1"
+                  className="rounded-xl border border-gray-200 shadow-sm transition duration-300 hover:-translate-y-1 dark:border-zinc-800"
                 />
               </div>
             ))}
@@ -147,7 +149,7 @@ const TemplateCard = ({
               alt={title}
               width={600}
               height={400}
-              className="rounded-xl border border-gray-200"
+              className="rounded-xl border border-gray-200 dark:border-zinc-800"
             />
           </div>
         </div>
@@ -310,31 +312,20 @@ export default function LandingTemplatesSection() {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-white transition-colors dark:bg-black">
       {/* ================= HEADER ================= */}
 
-      <div className="sticky top-20 z-10 border-b border-neutral-200 backdrop-blur-xl">
+      <div className="sticky top-20 z-10 border-b border-neutral-200 backdrop-blur-xl dark:border-neutral-800">
         <div className="flex flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           {/* LEFT MENU */}
-          <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-neutral-500">
+          <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-neutral-500 dark:text-neutral-400">
             {[
-              {
-                label: "Landing Page",
-                id: "landing-section",
-              },
-              {
-                label: "Dashboard & Application",
-                id: "dashboard-section",
-              },
-              {
-                label: "Templates",
-                id: "templates-section",
-              },
+              { label: "Landing Page", id: "landing-section" },
+              { label: "Dashboard & Application", id: "dashboard-section" },
+              { label: "Templates", id: "templates-section" },
             ]
               .filter((item) => {
-                if (filter === "Free") {
-                  return item.label === "Landing Page"
-                }
+                if (filter === "Free") return item.label === "Landing Page"
                 return true
               })
               .map((item) => (
@@ -342,34 +333,33 @@ export default function LandingTemplatesSection() {
                   key={item.label}
                   onClick={() => scrollToSection(item.id, item.label)}
                   className={`relative pb-3 transition ${
-                    activeTab === item.label ? "text-black" : "hover:text-black"
+                    activeTab === item.label
+                      ? "text-black dark:text-white"
+                      : "hover:text-black dark:hover:text-white"
                   }`}
                 >
                   {item.label}
 
                   {activeTab === item.label && (
-                    <span className="absolute bottom-0 left-0 h-[2px] w-full bg-black" />
+                    <span className="absolute bottom-0 left-0 h-[2px] w-full bg-black dark:bg-white" />
                   )}
                 </button>
               ))}
           </div>
 
           {/* RIGHT FILTER */}
-          <div className="flex w-fit items-center overflow-hidden rounded-xl border border-neutral-200 bg-white">
+          <div className="flex w-fit items-center overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
             {["All", "Premium", "Free"].map((item) => (
               <button
                 key={item}
                 onClick={() => {
                   setFilter(item)
-
-                  if (item === "Free") {
-                    setActiveTab("Landing Page")
-                  }
+                  if (item === "Free") setActiveTab("Landing Page")
                 }}
-                className={`border-r px-5 py-2 text-sm font-medium last:border-r-0 ${
+                className={`border-r px-5 py-2 text-sm font-medium transition last:border-r-0 ${
                   filter === item
-                    ? "bg-neutral-100 text-black"
-                    : "text-neutral-600 hover:bg-neutral-50"
+                    ? "bg-neutral-100 text-black dark:bg-neutral-800 dark:text-white"
+                    : "text-neutral-600 hover:bg-neutral-50 dark:text-neutral-400 dark:hover:bg-neutral-800"
                 }`}
               >
                 {item}
@@ -388,17 +378,17 @@ export default function LandingTemplatesSection() {
             className="scroll-mt-32 pt-10 sm:pt-16 lg:pt-24"
           >
             <div className="space-y-4 px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl">
+              <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl dark:text-white">
                 Shadcn UI Landing Page Templates
               </h2>
 
-              <p className="mb-10 text-lg text-gray-600">
+              <p className="mb-10 text-lg text-gray-600 dark:text-gray-400">
                 Landing page templates for creating engaging, conversion-focused
                 pages.
               </p>
             </div>
 
-            <div className="flex flex-col border-t border-dashed border-gray-200">
+            <div className="flex flex-col border-t border-dashed border-gray-200 dark:border-neutral-800">
               {landingFiltered.map((item) => (
                 <TemplateCard key={item.id} {...item} />
               ))}
@@ -414,17 +404,17 @@ export default function LandingTemplatesSection() {
             className="scroll-mt-32 pt-16 lg:pt-24"
           >
             <div className="space-y-4 px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl">
+              <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl dark:text-white">
                 Dashboard & Application Templates
               </h2>
 
-              <p className="mb-10 text-lg text-gray-600">
+              <p className="mb-10 text-lg text-gray-600 dark:text-gray-400">
                 Modern dashboard and app templates with clean layouts and
                 beautiful UI components.
               </p>
             </div>
 
-            <div className="flex flex-col border-t border-dashed border-gray-200">
+            <div className="flex flex-col border-t border-dashed border-gray-200 dark:border-neutral-800">
               {dashboardFiltered.map((item) => (
                 <TemplateCard key={item.id} {...item} />
               ))}
@@ -440,17 +430,17 @@ export default function LandingTemplatesSection() {
             className="scroll-mt-32 pt-16 lg:pt-24"
           >
             <div className="space-y-4 px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl">
+              <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl dark:text-white">
                 Website Templates Collection
               </h2>
 
-              <p className="mb-10 text-lg text-gray-600">
+              <p className="mb-10 text-lg text-gray-600 dark:text-gray-400">
                 Professionally designed templates for startups, agencies and
                 modern businesses.
               </p>
             </div>
 
-            <div className="flex flex-col border-t border-dashed border-gray-200">
+            <div className="flex flex-col border-t border-dashed border-gray-200 dark:border-neutral-800">
               {templateFiltered.map((item) => (
                 <TemplateCard key={item.id} {...item} />
               ))}

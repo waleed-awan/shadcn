@@ -69,20 +69,22 @@ function FAQBlock({ title, questions }: any) {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
     >
-      <h2 className="mb-6 text-2xl font-semibold text-black">{title}</h2>
+      <h2 className="mb-6 text-2xl font-semibold text-black dark:text-white">
+        {title}
+      </h2>
 
       <Accordion type="single" collapsible className="w-full">
         {questions.map((q: string, i: number) => (
           <AccordionItem
             key={i}
             value={`${title}-${i}`}
-            className="border-b border-dashed border-gray-300 transition hover:bg-gray-50"
+            className="border-b border-dashed border-gray-300 dark:border-neutral-800 transition hover:bg-gray-50 dark:hover:bg-neutral-900"
           >
-            <AccordionTrigger className="py-5 text-left text-base text-black hover:no-underline">
+            <AccordionTrigger className="py-5 text-left text-base text-black dark:text-white hover:no-underline">
               {q}
             </AccordionTrigger>
 
-            <AccordionContent className="pb-5 text-base text-gray-600">
+            <AccordionContent className="pb-5 text-base text-gray-600 dark:text-neutral-400">
               This is the answer to: {q}
             </AccordionContent>
           </AccordionItem>
@@ -94,7 +96,7 @@ function FAQBlock({ title, questions }: any) {
 
 export default function FAQPage() {
   return (
-    <main className="bg-white">
+    <main className="bg-white dark:bg-black transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-6 py-16">
 
         <section className="flex w-full flex-col items-center justify-center">
@@ -108,13 +110,16 @@ export default function FAQPage() {
             className="max-w-5xl px-4 text-center"
           >
             <div className="mb-8 inline-block">
-              <p className={`${caveat.className} text-2xl tracking-wide text-gray-800`}>
+              <p
+                className={`${caveat.className} text-2xl tracking-wide text-gray-800 dark:text-neutral-300`}
+              >
                 FAQ
               </p>
-              <div className="mt-1 h-0.5 w-full bg-black"></div>
+
+              <div className="mt-1 h-0.5 w-full bg-black dark:bg-white"></div>
             </div>
 
-            <h1 className="text-3xl leading-tight font-semibold tracking-tight text-black sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl leading-tight font-semibold tracking-tight text-black dark:text-white sm:text-4xl md:text-5xl">
               Any{" "}
               <span className="relative mx-1 sm:mx-2 md:mx-1 inline-block">
                 Questions?
@@ -128,24 +133,25 @@ export default function FAQPage() {
                 >
                   <path
                     d="M5 15 C 70 5, 230 5, 295 15"
-                    stroke="black"
+                    stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
+                    className="text-black dark:text-white"
                   />
                 </svg>
               </span>
             </h1>
 
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-500">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-500 dark:text-neutral-400">
               Browse through these FAQs to find answers to commonly asked questions.
             </p>
           </motion.div>
 
           {/* FAQ SECTION */}
           <div className="mt-16 grid w-full max-w-7xl grid-cols-1 gap-12 px-4 lg:grid-cols-2">
-            
+
             {/* LEFT */}
-            <div className="space-y-12 border-dashed border-gray-300 lg:border-r lg:pr-12">
+            <div className="space-y-12 border-dashed border-gray-300 dark:border-neutral-800 lg:border-r lg:pr-12">
               <FAQBlock
                 title={faqSections.general.title}
                 questions={faqSections.general.questions}

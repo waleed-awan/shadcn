@@ -29,7 +29,7 @@ export function OrbitingCircles({
 
   return (
     <>
-      {/* DOTED ORBIT PATH */}
+      {/* ORBIT PATH */}
       {path && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ export function OrbitingCircles({
             cy="50%"
             r={radius}
             fill="none"
-            className="stroke-gray-500/60 stroke-1"
+            className="stroke-gray-400 dark:stroke-gray-600 stroke-1"
             strokeDasharray="6 6"
           />
         </svg>

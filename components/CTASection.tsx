@@ -7,7 +7,7 @@ export default function CTASection() {
   return (
     <section
       id="cta"
-      className="overflow-hidden border-t border-dashed border-gray-300 bg-white pt-12 pb-24 sm:pt-14 sm:pb-32"
+      className="overflow-hidden border-t border-dashed border-gray-300 dark:border-neutral-800 bg-white dark:bg-black pt-12 pb-24 sm:pt-14 sm:pb-32 transition-colors duration-300"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
@@ -20,7 +20,7 @@ export default function CTASection() {
             duration: 0.9,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="relative overflow-visible rounded-[34px] bg-black px-6 pt-14 pb-20 sm:px-10 sm:pt-16 sm:pb-24 lg:px-16"
+          className="relative overflow-visible rounded-[34px] bg-black dark:bg-black px-6 pt-14 pb-20 sm:px-10 sm:pt-16 sm:pb-24 lg:px-16 transition-colors duration-300"
         >
 
           {/* TOP RIGHT SHAPE */}
@@ -33,7 +33,7 @@ export default function CTASection() {
           >
             <svg
               viewBox="0 0 128 128"
-              className="h-[240px] w-[240px] text-white"
+              className="h-[240px] w-[240px] text-white dark:text-neutral-400"
               fill="none"
             >
               <path
@@ -63,7 +63,7 @@ export default function CTASection() {
           >
             <svg
               viewBox="0 0 128 128"
-              className="h-[240px] w-[240px] text-white"
+              className="h-[240px] w-[240px] text-white dark:text-neutral-400"
               fill="none"
             >
               <path
@@ -91,7 +91,7 @@ export default function CTASection() {
             transition={{ delay: 0.2, duration: 0.7 }}
             className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center"
           >
-            <span className="mb-5 inline-flex items-center rounded-full border border-white/40 px-4 py-1 text-sm font-medium text-white">
+            <span className="mb-5 inline-flex items-center rounded-full border border-white/40 dark:border-neutral-700 px-4 py-1 text-sm font-medium text-white">
               Subscribe now
             </span>
 
@@ -99,7 +99,7 @@ export default function CTASection() {
               Stay Updated with Shadcn Studio
             </h2>
 
-            <p className="mt-5 max-w-3xl text-base leading-7 text-white/70 sm:text-lg">
+            <p className="mt-5 max-w-3xl text-base leading-7 text-white/70 dark:text-neutral-400 sm:text-lg">
               Want to be the first to know when we add new components,
               features, blocks, or releases?
             </p>
@@ -113,20 +113,20 @@ export default function CTASection() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="absolute left-1/2 top-full z-10 w-full max-w-xl -translate-x-1/2 -translate-y-1/2 px-4 "
           >
-            <div className="rounded-[20px] border-2 border-[#2d2d2d] bg-[#f3f3f3] p-2.5 shadow-[0_15px_40px_rgba(0,0,0,0.20)]">
+            <div className="rounded-[20px] border-2 border-[#2d2d2d] dark:border-neutral-700 bg-[#f3f3f3] dark:bg-neutral-900 p-2.5 shadow-[0_15px_40px_rgba(0,0,0,0.20)] transition-colors duration-300">
 
               <div className="flex items-center gap-2.5">
 
                 <input
                   type="email"
                   placeholder="Your email address"
-                  className="h-12 w-full rounded-lg border border-black/10 bg-white px-4 text-sm text-black outline-none placeholder:text-black/45"
+                  className="h-12 w-full rounded-lg border border-black/10 dark:border-white/10 bg-white dark:bg-black px-4 text-sm text-black dark:text-white outline-none placeholder:text-black/45 dark:placeholder:text-white/40 transition-colors duration-300"
                 />
 
                 {/* DESKTOP */}
                 <button
                   type="submit"
-                  className="hidden h-12 min-w-[145px] items-center justify-center rounded-lg bg-[#171717] px-5 text-base font-semibold text-white transition hover:bg-black sm:flex"
+                  className="hidden h-12 min-w-[145px] items-center justify-center rounded-lg bg-[#171717] dark:bg-white px-5 text-base font-semibold text-white dark:text-black transition hover:bg-black dark:hover:bg-neutral-200 sm:flex"
                 >
                   Subscribe
                 </button>
@@ -134,7 +134,7 @@ export default function CTASection() {
                 {/* MOBILE */}
                 <button
                   type="submit"
-                  className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#171717] text-white sm:hidden"
+                  className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#171717] dark:bg-white text-white dark:text-black sm:hidden"
                 >
                   <Send className="h-4 w-4" />
                 </button>
