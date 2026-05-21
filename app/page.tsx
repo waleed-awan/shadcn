@@ -1,5 +1,4 @@
 import AnimatedCardStack from "@/components/card-stack"
-import { BentoDemo } from "@/components/bento-section"
 import UIBlocksSection from "@/components/blocks-section"
 import DashboardSection from "@/components/dashboardsection"
 import BlocksSection from "@/components/explore-section"
@@ -8,13 +7,11 @@ import FrontendSection from "@/components/frontend-section"
 import Hero from "@/components/hero-section"
 import LandingSection from "@/components/landing-section"
 import ShowcaseMarquee from "@/components/marquee-section"
-import Navbar from "@/components/navbar"
 import StatsSection from "@/components/stats"
 import WallOfLove from "@/components/walloflove"
 import WhyBuilt from "@/components/why-built"
 import FeaturesGrid from "@/components/featuregrid"
 import CTASection from "@/components/CTASection"
-import Footer from "@/components/footer"
 import AdvancedToolsSection from "@/components/AdvancedToolsSection"
 import AnimatedBeamNetworkUI from "@/components/node-connection"
 
@@ -22,15 +19,18 @@ import SectionFrame from "@/components/SectionFrame"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       {/* GLOBAL BOXED LAYOUT */}
-      <div className="mx-auto w-full max-w-7xl border-x border-dashed border-zinc-200">
-
+      <div
+        className="
+          mx-auto w-full max-w-7xl
+          border-x border-dashed
+          border-zinc-200/70 dark:border-zinc-800/70
+        "
+      >
         <Hero />
 
         <ShowcaseMarquee />
-
-        
 
         <SectionFrame>
           <AnimatedCardStack />
@@ -87,10 +87,6 @@ export default function Home() {
         <SectionFrame>
           <CTASection />
         </SectionFrame>
-
-        <SectionFrame>
-          <Footer />
-        </SectionFrame> 
       </div>
     </main>
   )

@@ -13,14 +13,11 @@ const reviews = [
     content: (
       <>
         <p className="mb-3">
-          Just found{" "}
-          <span className="font-medium text-sky-600">@ShadcnStudio</span> 👀
+          Just found <span className="font-medium text-sky-600">@ShadcnStudio</span> 👀
         </p>
-
         <p className="mb-3">
           It fills the gap of missing customised demos which are not available in shadcn blocks or docs.
         </p>
-
         <p>
           E.g. pre-made user combobox which shows user avatar, email and name.
         </p>
@@ -33,9 +30,7 @@ const reviews = [
     img: "https://i.pravatar.cc/100?img=12",
     content: (
       <>
-        <p className="mb-3">
-          This is one of the few premium blocks that’s worth paying for.
-        </p>
+        <p className="mb-3">This is one of the few premium blocks that’s worth paying for.</p>
         <p>Beautiful UI & Great UX 👏🏻</p>
       </>
     ),
@@ -93,29 +88,33 @@ function ReviewCard({
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="w-[380px] rounded-[26px] border border-[#e7e7e7] bg-[#fafafa] p-5 shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
+      className="w-[380px] rounded-[26px] border border-zinc-200 dark:border-zinc-800 bg-[#fafafa] dark:bg-zinc-900 p-5 shadow-sm"
     >
       {/* Header */}
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="flex items-start gap-3">
-          <Avatar className="h-10 w-10 border border-gray-200">
+          <Avatar className="h-10 w-10 border border-zinc-200 dark:border-zinc-700">
             <AvatarImage src={img} alt={name} />
             <AvatarFallback>{name[0]}</AvatarFallback>
           </Avatar>
 
           <div>
-            <h4 className="text-[18px] font-semibold text-black">
+            <h4 className="text-[18px] font-semibold text-black dark:text-white">
               {name}
             </h4>
-            <p className="text-[13px] text-gray-500">{handle}</p>
+            <p className="text-[13px] text-gray-500 dark:text-zinc-400">
+              {handle}
+            </p>
           </div>
         </div>
 
-        <span className="text-[13px] text-gray-700">x.com</span>
+        <span className="text-[13px] text-gray-700 dark:text-zinc-400">
+          x.com
+        </span>
       </div>
 
       {/* Content */}
-      <div className="mt-5 text-[15px] leading-[1.7] text-gray-600">
+      <div className="mt-5 text-[15px] leading-[1.7] text-gray-600 dark:text-zinc-300">
         {content}
       </div>
     </motion.div>
@@ -129,7 +128,7 @@ export default function WallOfLove() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
       viewport={{ once: true, amount: 0.2 }}
-      className="overflow-hidden bg-white py-16"
+      className="overflow-hidden bg-white dark:bg-black py-16"
     >
       {/* Heading */}
       <motion.div
@@ -139,15 +138,15 @@ export default function WallOfLove() {
         viewport={{ once: true }}
         className="mx-auto mb-10 max-w-3xl px-4 text-center"
       >
-        <p className="text-sm font-medium text-gray-500">
+        <p className="text-sm font-medium text-gray-500 dark:text-zinc-400">
           Testimonials
         </p>
 
-        <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-black">
+        <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-black dark:text-white">
           The Wall of Love
         </h2>
 
-        <p className="mt-3 text-base text-gray-500">
+        <p className="mt-3 text-base text-gray-500 dark:text-zinc-400">
           Here&apos;s what users say about us.
         </p>
       </motion.div>
@@ -194,8 +193,8 @@ export default function WallOfLove() {
         </Marquee>
 
         {/* Fade overlays */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white dark:from-black to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white dark:from-black to-transparent" />
       </motion.div>
     </motion.section>
   )

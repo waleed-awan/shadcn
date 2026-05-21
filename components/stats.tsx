@@ -92,10 +92,10 @@ export default function StatsSection() {
   return (
     <section
       ref={ref}
-      className="w-full overflow-hidden  bg-white"
+      className="w-full overflow-hidden bg-white dark:bg-black"
     >
       {/* TOP SECTION */}
-      <div className="border-b border-dashed border-gray-300 px-4 py-14 sm:py-16 md:py-20">
+      <div className="border-b border-dashed border-gray-300 dark:border-white/10 px-4 py-14 sm:py-16 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -110,12 +110,12 @@ export default function StatsSection() {
             className="mb-3 flex flex-col items-center"
           >
             <span
-              className={`${caveat.className} text-[28px] text-black sm:text-[28px]`}
+              className={`${caveat.className} text-[28px] text-black dark:text-white sm:text-[28px]`}
             >
               Stats
             </span>
 
-            <div className="h-0.5 w-14 bg-black" />
+            <div className="h-0.5 w-14 bg-black dark:bg-white" />
           </motion.div>
 
           {/* MAIN HEADING */}
@@ -138,7 +138,7 @@ export default function StatsSection() {
           >
             {/* shadcn/studio */}
             <div className="relative inline-block">
-              <h2 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl md:text-5xl">
+              <h2 className="text-3xl font-semibold tracking-tight text-black dark:text-white sm:text-4xl md:text-5xl">
                 shadcn/studio
               </h2>
 
@@ -153,15 +153,16 @@ export default function StatsSection() {
               >
                 <path
                   d="M5 15 C 70 5, 230 5, 295 15"
-                  stroke="black"
+                  stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
+                  className="text-black dark:text-white"
                 />
               </svg>
             </div>
 
             {/* Impact */}
-            <span className="text-3xl tracking-tight text-black sm:text-4xl md:text-5xl">
+            <span className="text-3xl tracking-tight text-black dark:text-white sm:text-4xl md:text-5xl">
               Impact
             </span>
           </motion.div>
@@ -171,7 +172,7 @@ export default function StatsSection() {
             initial={{ opacity: 0, y: 25 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-8 max-w-2xl text-base text-gray-500 sm:text-lg"
+            className="mt-8 max-w-2xl text-base text-gray-500 dark:text-gray-400 sm:text-lg"
           >
             Celebrating the milestones achieved with shadcn/studio.
           </motion.p>
@@ -179,7 +180,7 @@ export default function StatsSection() {
       </div>
 
       {/* STATS GRID */}
-      <div className="grid grid-cols-1 border-dashed border-gray-300 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 border-dashed border-gray-300 dark:border-white/10 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((item, index) => {
           const Icon = item.icon
 
@@ -196,13 +197,13 @@ export default function StatsSection() {
               whileHover={{
                 y: -6,
               }}
-              className="flex min-h-[250px] flex-col items-center justify-center border-r border-b border-dashed border-gray-300 px-5 py-10 text-center last:border-r-0 sm:min-h-[280px]"
+              className="flex min-h-[250px] flex-col items-center justify-center border-r border-b border-dashed border-gray-300 dark:border-white/10 px-5 py-10 text-center last:border-r-0 sm:min-h-[280px] hover:bg-gray-50 dark:hover:bg-white/5"
             >
               {/* ICON */}
-              <Icon className="mb-6 text-[32px] text-gray-500" />
+              <Icon className="mb-6 text-[32px] text-gray-500 dark:text-gray-400" />
 
               {/* NUMBER */}
-              <h3 className="text-4xl font-bold tracking-tight text-black sm:text-5xl">
+              <h3 className="text-4xl font-bold tracking-tight text-black dark:text-white sm:text-5xl">
                 <Counter
                   end={item.value}
                   suffix={item.suffix}
@@ -211,7 +212,7 @@ export default function StatsSection() {
               </h3>
 
               {/* LABEL */}
-              <p className="mt-4 text-lg text-gray-500 sm:text-xl">
+              <p className="mt-4 text-lg text-gray-500 dark:text-gray-400 sm:text-xl">
                 {item.label}
               </p>
             </motion.div>

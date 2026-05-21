@@ -31,9 +31,9 @@ const rightItems = [
 
 function FeatureCard({ icon: Icon, text }: { icon: any; text: string }) {
   return (
-    <div className="relative z-10 flex h-12 items-center gap-2.5 rounded-xl border border-neutral-200 bg-white px-4 shadow-sm">
-      <Icon className="size-4 text-neutral-600" />
-      <span className="text-sm font-medium whitespace-nowrap text-neutral-900">
+    <div className="relative z-10 flex h-12 items-center gap-2.5 rounded-xl border border-neutral-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 shadow-sm">
+      <Icon className="size-4 text-neutral-600 dark:text-zinc-300" />
+      <span className="text-sm font-medium whitespace-nowrap text-neutral-900 dark:text-zinc-100">
         {text}
       </span>
     </div>
@@ -53,7 +53,7 @@ function RippleRing({ delay, size }: { delay: number; size: number }) {
         ease: "easeInOut",
         delay,
       }}
-      className="absolute rounded-[30px] border border-neutral-500"
+      className="absolute rounded-[30px] border border-neutral-500 dark:border-zinc-400"
       style={{ inset: -size }}
     />
   )
@@ -66,8 +66,8 @@ function Beam({ direction }: { direction: "x" | "y" }) {
     <motion.div
       className={`absolute inset-0 ${
         direction === "x"
-          ? "bg-gradient-to-r from-transparent via-neutral-900/50 to-transparent"
-          : "bg-gradient-to-b from-transparent via-neutral-900/50 to-transparent"
+          ? "bg-gradient-to-r from-transparent via-neutral-900/50 dark:via-white/40 to-transparent"
+          : "bg-gradient-to-b from-transparent via-neutral-900/50 dark:via-white/40 to-transparent"
       }`}
       animate={
         direction === "x"
@@ -92,7 +92,7 @@ export default function HeroWithFeatureShowcase() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="space-y-16 border-y border-gray-300 border-dashed bg-white py-20"
+      className="space-y-16 border-y border-gray-300 dark:border-zinc-700 border-dashed bg-white dark:bg-black py-20"
     >
       {/* HERO */}
       <motion.div
@@ -103,46 +103,44 @@ export default function HeroWithFeatureShowcase() {
         className="space-y-6"
       >
         <div className="flex flex-col items-center gap-4 text-center">
-          <span className="font-[Caveat] text-lg font-extrabold text-neutral-700 underline underline-offset-4">
+          <span className="font-[Caveat] text-lg font-extrabold text-neutral-700 dark:text-zinc-300 underline underline-offset-4">
             shadcn/ui for Figma
           </span>
 
-          <h2 className="max-w-4xl text-2xl font-semibold text-neutral-900 sm:text-3xl lg:text-4xl lg:leading-[1.4]">
+          <h2 className="max-w-4xl text-2xl font-semibold text-neutral-900 dark:text-white sm:text-3xl lg:text-4xl lg:leading-[1.4]">
             The Ultimate Design System
           </h2>
 
-          <p className="max-w-3xl text-lg text-neutral-600">
+          <p className="max-w-3xl text-lg text-neutral-600 dark:text-zinc-400">
             1000+ components, 700+ blocks, 10+ templates, 9 dashboards.
           </p>
         </div>
 
         <motion.div
-            initial={{ opacity: 0, y: 120 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
-            className="flex flex-wrap items-center justify-center gap-4 py-10"
+          initial={{ opacity: 0, y: 120 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9 }}
+          className="flex flex-wrap items-center justify-center gap-4 py-10"
+        >
+          {/* BLACK BUTTON */}
+          <Link
+            href="#pricing"
+            className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg bg-[#0d0d0d] px-6 py-3 text-base font-medium text-white shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-[1.02]"
           >
-            {/* BLACK BUTTON */}
-            <Link
-              href="#pricing"
-              className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg bg-[#0d0d0d] px-6 py-3 text-base font-medium text-white shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-[1.02]"
-            >
-              <span className="absolute inset-0 bg-gray-500 opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-100" />
+            <span className="absolute inset-0 bg-gray-500 opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="pointer-events-none absolute inset-[3px] rounded-lg border border-gray-400" />
+            <span className="relative z-10">Get all access</span>
+          </Link>
 
-              <div className="pointer-events-none absolute inset-[3px] rounded-lg border border-gray-400" />
-
-              <span className="relative z-10">Get all access</span>
-            </Link>
-
-            {/* WHITE BUTTON */}
-            <Link
-              href="#features"
-              className="group inline-flex items-center justify-center gap-3 rounded-lg bg-gray-200 px-6 py-3 text-base font-medium text-black shadow-[0_8px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:scale-[1.02]"
-            >
-              Explore more
-            </Link>
-          </motion.div>
+          {/* WHITE BUTTON */}
+          <Link
+            href="#features"
+            className="group inline-flex items-center justify-center gap-3 rounded-lg bg-gray-200 dark:bg-zinc-800 px-6 py-3 text-base font-medium text-black dark:text-white shadow-[0_8px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:scale-[1.02]"
+          >
+            Explore more
+          </Link>
+        </motion.div>
       </motion.div>
 
       {/* SHOWCASE */}
@@ -157,13 +155,13 @@ export default function HeroWithFeatureShowcase() {
         <div className="relative flex flex-col gap-6">
           {leftItems.map((item, i) => (
             <div key={i} className="relative flex justify-end">
-              <div className="absolute top-1/2 left-full hidden h-px w-[140px] -translate-y-1/2 overflow-hidden bg-neutral-200 lg:block">
+              <div className="absolute top-1/2 left-full hidden h-px w-[140px] -translate-y-1/2 overflow-hidden bg-neutral-200 dark:bg-zinc-700 lg:block">
                 <Beam direction="x" />
               </div>
 
               {i !== 1 && (
                 <div
-                  className={`absolute hidden w-px overflow-hidden bg-neutral-200 lg:block ${
+                  className={`absolute hidden w-px overflow-hidden bg-neutral-200 dark:bg-zinc-700 lg:block ${
                     i === 0
                       ? "top-1/2 right-[-140px] h-[72px]"
                       : "right-[-140px] bottom-1/2 h-[72px]"
@@ -180,7 +178,7 @@ export default function HeroWithFeatureShowcase() {
 
         {/* CENTER */}
         <div className="relative hidden items-center justify-center lg:flex">
-          <div className="absolute top-1/2 left-[-420px] h-px w-[840px] -translate-y-1/2 overflow-hidden bg-neutral-200">
+          <div className="absolute top-1/2 left-[-420px] h-px w-[840px] -translate-y-1/2 overflow-hidden bg-neutral-200 dark:bg-zinc-700">
             <Beam direction="x" />
           </div>
 
@@ -189,9 +187,9 @@ export default function HeroWithFeatureShowcase() {
             <RippleRing delay={0.3} size={20} />
             <RippleRing delay={1.6} size={20} />
 
-            <div className="relative z-10 rounded-[28px] border border-neutral-200 bg-white shadow-sm">
+            <div className="relative z-10 rounded-[28px] border border-neutral-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm">
               <div className="flex items-center gap-4 p-4">
-                <div className="flex size-14 items-center justify-center rounded-2xl border border-neutral-200 bg-white">
+                <div className="flex size-14 items-center justify-center rounded-2xl border border-neutral-200 dark:border-zinc-700 bg-white dark:bg-zinc-800">
                   <div className="flex size-9 items-center justify-center rounded-lg bg-black">
                     <img
                       src="https://cdn.shadcnstudio.com/ss-assets/brand-logo/shadcn-logo.png"
@@ -200,9 +198,9 @@ export default function HeroWithFeatureShowcase() {
                   </div>
                 </div>
 
-                <Plus className="size-4 text-neutral-500" />
+                <Plus className="size-4 text-neutral-500 dark:text-zinc-400" />
 
-                <div className="flex size-14 items-center justify-center rounded-2xl border border-neutral-200 bg-white">
+                <div className="flex size-14 items-center justify-center rounded-2xl border border-neutral-200 dark:border-zinc-700 bg-white dark:bg-zinc-800">
                   <div className="flex size-9 items-center justify-center rounded-lg bg-black">
                     <img
                       src="https://cdn.shadcnstudio.com/ss-assets/brand-logo/figma-icon.png"
@@ -219,13 +217,13 @@ export default function HeroWithFeatureShowcase() {
         <div className="relative flex flex-col gap-6">
           {rightItems.map((item, i) => (
             <div key={i} className="relative flex justify-start">
-              <div className="absolute top-1/2 right-full hidden h-px w-[140px] -translate-y-1/2 overflow-hidden bg-neutral-200 lg:block">
+              <div className="absolute top-1/2 right-full hidden h-px w-[140px] -translate-y-1/2 overflow-hidden bg-neutral-200 dark:bg-zinc-700 lg:block">
                 <Beam direction="x" />
               </div>
 
               {i !== 1 && (
                 <div
-                  className={`absolute hidden w-px overflow-hidden bg-neutral-200 lg:block ${
+                  className={`absolute hidden w-px overflow-hidden bg-neutral-200 dark:bg-zinc-700 lg:block ${
                     i === 0
                       ? "top-1/2 left-[-140px] h-[72px]"
                       : "bottom-1/2 left-[-140px] h-[72px]"
@@ -241,7 +239,7 @@ export default function HeroWithFeatureShowcase() {
         </div>
       </motion.div>
 
-      {/* ✅ FIGMA SHOWCASE WITH ANIMATION */}
+      {/* SHOWCASE COMPONENT */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -95,12 +95,31 @@ function FlipWords({
 
 export default function HeroHeading() {
   return (
-    <h1 className="text-xl leading-[1.2] font-bold tracking-tight text-black md:text-4xl">
+    <h1 className="text-xl leading-[1.2] font-bold tracking-tight text-black dark:text-white md:text-4xl">
       Build Futuristic UIs with Shadcn{" "}
+
       <FlipWords
         words={["Themes", "Components", "Animations"]}
-        className="relative inline-block px-1 before:absolute before:-bottom-[4px] before:left-[2px] before:h-[5px] before:w-[97%] before:rotate-[1.2deg] before:rounded-[100%] before:border-b-2 before:border-zinc-700 before:opacity-50 after:absolute after:-bottom-2 after:left-0 after:h-[6px] after:w-full after:rotate-[-1.5deg] after:rounded-[100%] after:border-b-[3px] after:border-black after:opacity-90"
+        className="
+          relative inline-block px-1
+          before:absolute before:-bottom-[4px] before:left-[2px]
+          before:h-[5px] before:w-[97%]
+          before:rotate-[1.2deg]
+          before:rounded-[100%]
+          before:border-b-2
+          before:border-zinc-700 dark:before:border-zinc-300
+          before:opacity-50
+
+          after:absolute after:-bottom-2 after:left-0
+          after:h-[6px] after:w-full
+          after:rotate-[-1.5deg]
+          after:rounded-[100%]
+          after:border-b-[3px]
+          after:border-black dark:after:border-white
+          after:opacity-90
+        "
       />
+
       <br />
       at Warp Speed ⚡
     </h1>

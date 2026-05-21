@@ -12,7 +12,7 @@ const caveat = Caveat({
 
 export default function WhyBuilt() {
   return (
-    <section className="relative mt-10 w-full overflow-hidden border-y border-dashed border-gray-300 bg-white py-20">
+    <section className="relative mt-10 w-full overflow-hidden border-y border-dashed border-gray-300 dark:border-white/10 bg-white dark:bg-black py-20">
       
       {/* Main Container */}
       <motion.div
@@ -20,7 +20,7 @@ export default function WhyBuilt() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.9, ease: "easeOut" }}
-        className="mx-auto border-x-1 border-dashed border-gray-300 max-w-[1000px] px-8"
+        className="mx-auto border-x border-dashed border-gray-300 dark:border-white/30 max-w-[1000px] px-8"
       >
         
         {/* Heading */}
@@ -33,12 +33,12 @@ export default function WhyBuilt() {
         >
           <div className="inline-block">
             <h2
-              className={`${caveat.className} text-[27px] font-semibold text-black`}
+              className={`${caveat.className} text-[27px] font-semibold text-black dark:text-white`}
             >
               Why We Built shadcn/studio?
             </h2>
 
-            <div className="mt-[2px] h-[2px] w-full bg-black" />
+            <div className="mt-[2px] h-[2px] w-full bg-black dark:bg-white" />
           </div>
         </motion.div>
 
@@ -48,7 +48,7 @@ export default function WhyBuilt() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.7 }}
-          className="space-y-9 text-left text-[16px] leading-[1.9] tracking-[-0.01em] text-black md:text-[17px]"
+          className="space-y-9 text-left text-[16px] leading-[1.9] tracking-[-0.01em] text-black dark:text-white md:text-[17px]"
         >
           <p>
             With over a decade of experience creating UI components,
@@ -112,7 +112,7 @@ export default function WhyBuilt() {
         >
           {/* Left Author */}
           <div className="flex items-center gap-4">
-            <div className="relative h-[56px] w-[56px] overflow-hidden rounded-full border border-neutral-200">
+            <div className="relative h-[56px] w-[56px] overflow-hidden rounded-full border border-neutral-200 dark:border-white/10">
               <Image
                 src="/avatar-33.png"
                 alt="Ajay Patel"
@@ -123,15 +123,15 @@ export default function WhyBuilt() {
 
             <div>
               <div className="flex items-center gap-2">
-                <h4 className="text-[18px] font-semibold text-black">
+                <h4 className="text-[18px] font-semibold text-black dark:text-white">
                   Ajay Patel
                 </h4>
 
-                <FaXTwitter className="h-4 w-4 text-neutral-500" />
-                <FaLinkedinIn className="h-4 w-4 text-neutral-500" />
+                <FaXTwitter className="h-4 w-4 text-neutral-500 dark:text-neutral-400" />
+                <FaLinkedinIn className="h-4 w-4 text-neutral-500 dark:text-neutral-400" />
               </div>
 
-              <p className="mt-1 text-[14px] text-neutral-500">
+              <p className="mt-1 text-[14px] text-neutral-500 dark:text-neutral-400">
                 Developer & Co-founder
               </p>
             </div>
@@ -141,20 +141,20 @@ export default function WhyBuilt() {
           <div className="flex items-center gap-4">
             <div className="order-2 md:order-1">
               <div className="flex items-center gap-2 md:justify-end">
-                <FaXTwitter className="h-4 w-4 text-neutral-500" />
-                <FaLinkedinIn className="h-4 w-4 text-neutral-500" />
+                <FaXTwitter className="h-4 w-4 text-neutral-500 dark:text-neutral-400" />
+                <FaLinkedinIn className="h-4 w-4 text-neutral-500 dark:text-neutral-400" />
 
-                <h4 className="text-[18px] font-semibold text-black">
+                <h4 className="text-[18px] font-semibold text-black dark:text-white">
                   Anand Patel
                 </h4>
               </div>
 
-              <p className="mt-1 text-[14px] text-neutral-500 md:text-right">
+              <p className="mt-1 text-[14px] text-neutral-500 dark:text-neutral-400 md:text-right">
                 Designer & Co-founder
               </p>
             </div>
 
-            <div className="relative order-1 h-[56px] w-[56px] overflow-hidden rounded-full border border-neutral-200 md:order-2">
+            <div className="relative order-1 h-[56px] w-[56px] overflow-hidden rounded-full border border-neutral-200 dark:border-white/10 md:order-2">
               <Image
                 src="/avatar-32.png"
                 alt="Anand Patel"

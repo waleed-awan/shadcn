@@ -13,7 +13,7 @@ import { motion } from "framer-motion"
 
 export default function Hero() {
   return (
-    <section className="relative z-10 overflow-hidden bg-white">
+    <section className="relative z-10 overflow-hidden bg-white dark:bg-black">
       <GridBackground />
 
       {/* CONTAINER */}
@@ -31,15 +31,15 @@ export default function Hero() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative mb-8 flex flex-wrap items-center justify-center gap-2 overflow-hidden rounded-full border bg-white px-4 py-1 text-sm shadow-sm"
+            className="relative mb-8 flex flex-wrap items-center justify-center gap-2 overflow-hidden rounded-full border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-4 py-1 text-sm shadow-sm"
           >
             <BorderBeam duration={8} size={100} />
 
-            <span className="rounded-2xl border border-black bg-black px-1.5 text-[12px] text-white">
+            <span className="rounded-2xl border border-black dark:border-white bg-black dark:bg-white px-1.5 text-[12px] text-white dark:text-black">
               New
             </span>
 
-            <span className="text-gray-800">
+            <span className="text-gray-800  dark:text-gray-300">
               🎉 Dashboard & Marketing UI Blocks, AI Theme Generator, Shadcn MCP
               & more... 🪄
             </span>
@@ -62,16 +62,18 @@ export default function Hero() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <p className="mt-6 max-w-4xl text-lg text-gray-500 sm:text-xl">
+            <p className="mt-6 max-w-4xl text-lg text-gray-500 dark:text-gray-400 sm:text-xl">
               Accelerate your project development with ready-to-use, and fully
               customizable shadcn ui
             </p>
 
             <p className="mt-1 text-base sm:text-lg">
-              <span className="font-medium text-black">
+              <span className="font-medium text-black dark:text-white">
                 Components, Blocks, UI Kits, Boilerplates, Templates and Themes
               </span>{" "}
-              <span className="text-gray-500">with AI Tools ✨.</span>
+              <span className="text-gray-500 dark:text-gray-400">
+                with AI Tools ✨.
+              </span>
             </p>
           </motion.div>
 
@@ -97,7 +99,6 @@ export default function Hero() {
 
             {/* STARS */}
             <div className="flex flex-col items-center gap-1">
-              {/* SVG GRADIENT */}
               <svg width="0" height="0">
                 <defs>
                   <linearGradient
@@ -113,7 +114,6 @@ export default function Hero() {
                 </defs>
               </svg>
 
-              {/* STARS */}
               <div className="flex items-center gap-1">
                 {[...Array(4)].map((_, i) => (
                   <Star
@@ -124,9 +124,8 @@ export default function Hero() {
                   />
                 ))}
 
-                {/* HALF STAR */}
                 <div className="relative h-4 w-4">
-                  <Star className="absolute h-4 w-4 text-gray-300" />
+                  <Star className="absolute h-4 w-4 text-gray-300 dark:text-gray-600" />
 
                   <div className="absolute w-1/2 overflow-hidden">
                     <Star
@@ -137,44 +136,26 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <span className="ml-2 font-medium text-black">4.5</span>
+                <span className="ml-2 font-medium text-black dark:text-white">
+                  4.5
+                </span>
               </div>
 
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Loved by industry creators
               </p>
             </div>
 
             {/* DIVIDER */}
-            <div className="hidden h-6 w-px bg-gray-300 md:block" />
+            <div className="hidden h-6 w-px bg-gray-300 dark:bg-zinc-700 md:block" />
 
             {/* ICONS */}
             <div className="flex flex-wrap items-center justify-center gap-5">
-              <Image
-                src="/hero-motion-icon.png"
-                alt=""
-                width={28}
-                height={28}
-              />
+              <Image src="/hero-motion-icon.png" alt="" width={28} height={28} />
               <Image src="/hero-react-icon.png" alt="" width={28} height={28} />
-              <Image
-                src="/hero-radix-ui-icon.png"
-                alt=""
-                width={28}
-                height={28}
-              />
-              <Image
-                src="/hero-nextjs-icon.png"
-                alt=""
-                width={28}
-                height={28}
-              />
-              <Image
-                src="/hero-tailwindcss-icon.png"
-                alt=""
-                width={28}
-                height={28}
-              />
+              <Image src="/hero-radix-ui-icon.png" alt="" width={28} height={28} />
+              <Image src="/hero-nextjs-icon.png" alt="" width={28} height={28} />
+              <Image src="/hero-tailwindcss-icon.png" alt="" width={28} height={28} />
             </div>
           </motion.div>
 
@@ -189,11 +170,11 @@ export default function Hero() {
             {/* BLACK BUTTON */}
             <Link
               href="#pricing"
-              className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg bg-[#0d0d0d] px-6 py-3 text-base font-medium text-white shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-[1.02]"
+              className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg bg-[#0d0d0d] dark:bg-white px-6 py-3 text-base font-medium text-white dark:text-black shadow-[0_10px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:scale-[1.02]"
             >
               <span className="absolute inset-0 bg-gray-500 opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-100" />
 
-              <div className="pointer-events-none absolute inset-[3px] rounded-lg border border-gray-400" />
+              <div className="pointer-events-none absolute inset-[3px] rounded-lg border border-gray-400 dark:border-zinc-300" />
 
               <span className="relative z-10">Get all access</span>
             </Link>
@@ -201,7 +182,7 @@ export default function Hero() {
             {/* WHITE BUTTON */}
             <Link
               href="#features"
-              className="group inline-flex items-center justify-center gap-3 rounded-lg bg-gray-200 px-6 py-3 text-base font-medium text-black shadow-[0_8px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:scale-[1.02]"
+              className="group inline-flex items-center justify-center gap-3 rounded-lg bg-gray-200 dark:bg-zinc-800 px-6 py-3 text-base font-medium text-black dark:text-white shadow-[0_8px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover:scale-[1.02]"
             >
               Explore more
             </Link>

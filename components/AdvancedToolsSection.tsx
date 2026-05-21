@@ -61,7 +61,7 @@ export default function AdvancedToolsSection() {
       transition={{ duration: 0.7 }}
       viewport={{ once: true }}
       id="advance-tools"
-      className="overflow-hidden bg-white pt-10 sm:pt-16 lg:pt-24"
+      className="overflow-hidden bg-white dark:bg-black pt-10 sm:pt-16 lg:pt-24"
     >
 
       {/* TOP GRID */}
@@ -70,7 +70,7 @@ export default function AdvancedToolsSection() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="grid divide-y divide-dashed border-y border-dashed md:grid-cols-2 xl:grid-cols-4"
+        className="grid divide-y divide-dashed border-y border-dashed border-gray-200 dark:border-zinc-700 md:grid-cols-2 xl:grid-cols-4"
       >
         {tools.map((item, i) => {
           const Icon = item.icon
@@ -81,18 +81,18 @@ export default function AdvancedToolsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="flex cursor-pointer items-center gap-4 border-t border-r border-b border-dashed border-gray-200 px-4 py-8 transition hover:bg-gray-50"
+              className="flex cursor-pointer items-center gap-4 border-t border-r border-b border-dashed border-gray-200 dark:border-zinc-700 px-4 py-8 transition hover:bg-gray-50 dark:hover:bg-zinc-900"
             >
-              <div className="hidden size-12 place-items-center rounded-lg border bg-white lg:grid">
-                <Icon className="size-6 text-black" />
+              <div className="hidden size-12 place-items-center rounded-lg border bg-white dark:bg-zinc-900 dark:border-zinc-700 lg:grid">
+                <Icon className="size-6 text-black dark:text-white" />
               </div>
 
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-gray-500">
+                <span className="text-sm font-medium text-gray-500 dark:text-zinc-400">
                   {item.subtitle}
                 </span>
 
-                <h3 className="text-lg font-semibold text-black">
+                <h3 className="text-lg font-semibold text-black dark:text-white">
                   {item.title}
                 </h3>
               </div>
@@ -112,7 +112,7 @@ export default function AdvancedToolsSection() {
           viewport={{ once: true }}
           className="mx-auto max-w-4xl px-4 text-center"
         >
-          <h2 className="text-2xl leading-relaxed font-semibold text-black sm:text-3xl lg:text-3xl">
+          <h2 className="text-2xl leading-relaxed font-semibold text-black dark:text-white sm:text-3xl lg:text-3xl">
             No Code. Just Drag, Drop &{" "}
             <span className="relative inline-block font-bold">
               Build Your Landing Page
@@ -125,7 +125,8 @@ export default function AdvancedToolsSection() {
               >
                 <path
                   d="M5 15 C 70 5, 230 5, 295 15"
-                  stroke="black"
+                  stroke="currentColor"
+                  className="text-black dark:text-white"
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
@@ -133,21 +134,21 @@ export default function AdvancedToolsSection() {
             </span>
           </h2>
 
-          <p className="mt-4 text-base text-gray-600 sm:text-lg">
+          <p className="mt-4 text-base text-gray-600 dark:text-zinc-400 sm:text-lg">
             Create landing pages by dragging blocks, preview in real-time and export production-ready code.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <a
               href="/#pricing"
-              className="inline-flex items-center justify-center gap-1 rounded-md bg-black px-6 py-2 text-base font-medium text-white transition hover:bg-black/80"
+              className="inline-flex items-center justify-center gap-1 rounded-md bg-black dark:bg-white px-6 py-2 text-base font-medium text-white dark:text-black transition hover:opacity-80"
             >
               Get all access
             </a>
 
             <a
               href="/builder"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-gray-200 px-6 py-2 text-base font-medium text-black shadow-sm transition hover:bg-gray-50"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-gray-200 dark:bg-zinc-800 px-6 py-2 text-base font-medium text-black dark:text-white shadow-sm transition hover:opacity-80"
             >
               Explore more
             </a>
@@ -160,7 +161,7 @@ export default function AdvancedToolsSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mt-12 grid border-y border-dashed border-gray-300 lg:grid-cols-2"
+          className="mt-12 grid border-y border-dashed border-gray-300 dark:border-zinc-700 lg:grid-cols-2"
         >
 
           {/* LEFT */}
@@ -174,16 +175,18 @@ export default function AdvancedToolsSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="cursor-pointer border-r border-b border-dashed border-gray-200 p-6 transition hover:bg-gray-50"
+                  className="cursor-pointer border-r border-b border-dashed border-gray-200 dark:border-zinc-700 p-6 transition hover:bg-gray-50 dark:hover:bg-zinc-900"
                 >
                   <div className="mb-2 flex items-center gap-2">
-                    <Icon className="size-5 text-black" />
-                    <h3 className="text-lg font-semibold text-black">
+                    <Icon className="size-5 text-black dark:text-white" />
+                    <h3 className="text-lg font-semibold text-black dark:text-white">
                       {step.title}
                     </h3>
                   </div>
 
-                  <p className="text-sm text-gray-600">{step.desc}</p>
+                  <p className="text-sm text-gray-600 dark:text-zinc-400">
+                    {step.desc}
+                  </p>
                 </motion.div>
               )
             })}
@@ -198,7 +201,7 @@ export default function AdvancedToolsSection() {
             className="flex items-center justify-center p-6"
           >
             <video
-              className="w-full max-w-xl rounded-lg border"
+              className="w-full max-w-xl rounded-lg border border-gray-300 dark:border-zinc-700"
               autoPlay
               playsInline
               muted

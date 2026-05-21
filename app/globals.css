@@ -11,6 +11,16 @@ body {
   overflow-x: clip;
 }
 
+
+@layer base {
+  body {
+    @apply bg-white text-black dark:bg-black dark:text-white;
+  }
+}
+
+
+
+
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: var(--font-sans);
